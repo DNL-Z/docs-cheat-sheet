@@ -1,7 +1,5 @@
 # JavaScript
 
----
-
 ## Variables
 - **let** : variable à portée de bloc (**block scoped**) et peut-être réassignée
 - **const** : à portée de bloc (**block scoped**) et sa référence ne peut pas être réassignée
