@@ -30,6 +30,11 @@ nvm use v<version>
 nvm alias default <version>
 ```
 
+### Uninstall version
+```bash
+  nvm uninstall <version>
+```
+
 ---
 
 ## Initialize new **Node** project
