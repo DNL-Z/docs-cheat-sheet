@@ -91,7 +91,7 @@ Axios is a promise-based HTTP Client for Node.js and the browser. It is isomorph
 
 # ESLint
 L’outil permettant de signaler les erreurs de code
-file name => .eslintrc.json or else
+file name → eslint.config.js or eslint.config.mjs
 
 # Install ESLint
 ```bash
@@ -105,12 +105,13 @@ L’outil de formatage de code de référence
 file name => .prettierrc.json or else
 
 ```bash
-$ npm install --save-dev --save-exact prettier
+  $ npm install --save-dev --save-exact prettier
 ```
 
 # Format all files with Prettier
 ```bash
-$ npx prettier . --write
+  $ npx prettier . --check
+  $ npx prettier . --write
 ```
 
 # Keyboard Shortcuts in WebStorm on MacBook
@@ -137,5 +138,7 @@ $ npm install --save @emotion/react
 
 # Simple Import Sort
 ```bash
-$ npm i eslint-plugin-simple-import-sort
+  $ npm install --save-dev eslint-plugin-simple-import-sort
 ```
+
+⚠️ Need to change the **eslint.config.js** OR **eslint.config.mjs** file
