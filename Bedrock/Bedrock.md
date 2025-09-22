@@ -1,31 +1,29 @@
 # BEDROCK
 
-### Access: bedrock-discovery
+> Access for **bedrock-discovery**: <br>
+> /wp-admin <br>
+> dnl <br>
+> wTshi1O%Fst$r0%#Q8*l
 
-/wp-admin <br>
-dnl <br>
-wTshi1O%Fst$r0%#Q8*l
-
-### Create a new project
+### Create a New Project
 
 ```bash
   composer create-project roots/bedrock name_project
 ```
 
-### Installer **WordPress** avec **Bedrock**
-(exécuter dans la racine du projet)
+### Install WordPress with Bedrock
 
 ```bash
   composer install
 ```
 
-### Créer le fichier /package.json
+### Create file package.json
 
 ```bash
   npm init
 ```
 
-### Installer les plugin via **composer** avec **wpackagist**
+### Install plugin via composer with wpackagist
 
 ```bash
   composer require (--dev) wpackagist-plugin/plugin_name
