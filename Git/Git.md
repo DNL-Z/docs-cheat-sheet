@@ -1,15 +1,22 @@
 # GIT
 
-### Configuration file .gitconfig
+### Configuration file 
+
+**.gitconfig**
 
 > [user]
->   name = DNL <br>
->   email = danylo.zhalkovskyy@icloud.com <br>
+>
+>> name = DNL <br>
+>> email = danylo.zhalkovskyy@icloud.com <br>
+>
 > [core]
->   autocrlf = input <br>
+>
+>> autocrlf = input <br>
+>
 > [pull]
->   ff = only <br>
->   rebase = true
+>
+>> ff = only <br>
+>> rebase = true
 
 ---
 
@@ -89,7 +96,7 @@ Si je supprime un fichier manuellement, mais qu’il est déjà sur repository g
   git push
 ```
 
-### Modifier un commit locale
+### Modifier un commit local
 
 ```bash
   git commit —amend
