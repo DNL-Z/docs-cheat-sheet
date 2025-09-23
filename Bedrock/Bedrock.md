@@ -1,6 +1,6 @@
 # BEDROCK
 
-> Access for **bedrock-discovery**: <br>
+Access for **bedrock-discovery**: <br>
 > /wp-admin <br>
 > dnl <br>
 > wTshi1O%Fst$r0%#Q8*l
