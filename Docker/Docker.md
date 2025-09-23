@@ -90,13 +90,13 @@
   lsb_release -a
 ```
 
-### Installer ngnix
+### Installer nginx
 
 ```bash
   apt-get install -y ngnix
 ```
 
-### Voir ngnix
+### Voir nginx
 
 ```bash
   ngnix -v
@@ -121,7 +121,7 @@ OR
 -t
  → permet de donner un nom à votre image **Docker**
 
-### Lancer en local avec une page personnalisé avec le chemin indiqué
+### Lancer en local avec une page personnalisée avec le chemin indiqué
 
 ```bash
   docker container run -d --rm -p 8080:80 -v /Users/vtch_zvtn/Dev/Docker/docker-exercice-1/docker-volume/:/usr/share/nginx/html --name dnl_2 nginx:1.14
@@ -226,6 +226,6 @@ OR
  qui permet de dire que le conteneur dépend d'un autre conteneur
 
 **ports**
- qui permet de définir les ports disponibles entre la machine host et le conteneur
+ qui permettent de définir les ports disponibles entre la machine host et le conteneur
 
 ---
