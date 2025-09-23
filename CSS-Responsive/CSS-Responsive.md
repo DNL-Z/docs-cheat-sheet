@@ -1,6 +1,6 @@
-# **CSS** - **Responsive**
+# CSS - Responsive
 
-### **Breakpoints**
+### Breakpoints
 
 ---
 
