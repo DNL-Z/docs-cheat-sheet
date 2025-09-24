@@ -1,55 +1,52 @@
 # GITIGNORE
 
-## Template
-
-.gitignore
- file for **React**, Next
+Example of **.gitignore** file for React, or Next projects
 
 ---
 
-## dependencies
+### dependencies
 
-/node_modules
-/.pnp
+/node_modules <br>
+/.pnp <br>
 .pnp.js
 
-## testing
+### testing
 
 /coverage
 
-## production
+### production
 
 /build
 
-## misc
+### misc
 
-.DS_Store
+.DS_Store <br>
 *.pem
 
-## debug
+### debug
 
-**npm**-debug.log*
-**yarn**-debug.log*
+**npm**-debug.log* <br>
+**yarn**-debug.log* <br>
 **yarn**-error.log*
 
-## local env files
+### local env files
 
-.env
-.env.local
-.env.development.local
-.env.test.local
+.env <br>
+.env.local <br>
+.env.development.local <br>
+.env.test.local <br>
 .env.production.local
 
-## vercel
+### vercel
 
 .vercel
 
-## typescript
+### typescript
 
-*.tsbuildinfo
+*.tsbuildinfo <br>
 next-env.d.ts
 
-## jetbrains
+### jetbrains
 
 .idea
 
