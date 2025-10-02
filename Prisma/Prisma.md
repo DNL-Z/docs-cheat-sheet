@@ -3,8 +3,10 @@
 ### **Commands Prisma (ecosysteme)**
 ```bash
   $ npx prisma generate     # Generate the client
+  $ npx prisma validate     # Validates the schema
   $ npx prisma migrate      # Manages migrations
   $ npx prisma studio       # Graphical interface GUI
+  $ npx prisma db pull      # Pull the schema from the database
   $ npx prisma db push      # Synchronize the schema
 ```
 
