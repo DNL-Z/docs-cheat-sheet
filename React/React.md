@@ -1,4 +1,4 @@
-# React
+# React ⚛︎
 
 ### Create a new project with Create React App
 https://create-react-app.dev/docs/getting-started
