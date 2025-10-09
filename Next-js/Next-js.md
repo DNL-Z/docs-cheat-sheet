@@ -1,6 +1,7 @@
-# Next JS
+# Next.js
 
-## Create Next JS App
+## Create Next.js App
 
-$
-npx create-next-app@latest
+```bash
+  $ npx create-next-app@latest
+```
