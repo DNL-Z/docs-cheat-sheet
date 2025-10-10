@@ -20,6 +20,12 @@
 
 ---
 
+### Pour savoir si le projet est connecté à un remote (comme GitHub)
+```bash
+  git remote -v
+```
+
+
 ### Générer les clés « id_rsa » et « id_rsa.pub » dans le dossier ~/.ssh
 
 ```bash
