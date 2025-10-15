@@ -1,9 +1,9 @@
-# MySQL
+# SQL
 
 ## Se connecter à une bdd avec MySQL
 
 ```bash
-mysql -uroot -p
+  mysql -uroot -p
 ```
 
 ## Local mamp
@@ -14,11 +14,11 @@ $
 ## Importer une bdd en .sql dans une bdd
 
 ```bash
-mysql -u root -ppassword nom_base_de_donnees < nom_fichier.sql
+  mysql -u root -ppassword nom_base_de_donnees < nom_fichier.sql
 ```
 
 ## Exporter une bdd dans un fichier .sql
 
 ```bash
-mysqldump -u root -ppassword nom_base_de_donnees > nom_fichier.sql
+  mysqldump -u root -ppassword nom_base_de_donnees > nom_fichier.sql
 ```
