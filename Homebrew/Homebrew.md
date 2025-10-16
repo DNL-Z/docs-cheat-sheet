@@ -1,69 +1,67 @@
 # HOMEBREW
 
 **Homebrew**
- is a package manager for MacOS and **Linux**.
+ is a package manager for macOS and **Linux**.
 
-Formulae
- => source code that will be compiled
+Formulae => source code that will be compiled
 
-Casks
- => source code are pre-compiled, with some transformation in the code, and after is compiled
+Casks => source code is pre-compiled, with some transformation in the code, and after is compiled
 
-## Version
+### Version
 
 ```bash
-brew --version
+  brew --version
 ```
 
-## Packages maintenance
+### Packages maintenance
 
 ```bash
-brew doctor
+  brew doctor
 ```
 
-## Update & Upgrade
+### Update & Upgrade
 
 ```bash
-brew update
+  brew update
 ```
 
 ```bash
-brew upgrade
+  brew upgrade
 ```
 
-## Help
+### Help
 
 ```bash
-brew help
+  brew help
 ```
 
-## Informations
+### Informations
 
 ```bash
-brew info
+  brew info
 ```
 
-## List packages
+### List packages
 
 ```bash
-brew list
+  brew list
 ```
 
-## Research packages
+### Research packages
 
 ```bash
-brew search
+  brew search
 ```
 
-## Install Cask
+### Install Cask
 
 ```bash
-brew install --cask cask_name
-brew install --cask --appdir /Users/DNL/Applications cask_name
+  brew install --cask cask_name
+  brew install --cask --appdir /Users/DNL/Applications cask_name
 ```
 
-## Uninstall Cask
+### Uninstall Cask
 
 ```bash
-brew uninstall --cask cask_name
+  brew uninstall --cask cask_name
 ```
