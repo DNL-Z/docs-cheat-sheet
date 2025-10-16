@@ -3,31 +3,31 @@
 ## Check current **Node** version
 
 ```bash
-node --version
+  node --version
 ```
 
 ## List of available versions
 
 ```bash
-nvm ls
+  nvm ls
 ```
 
 ## Install new version
 
 ```bash
-nvm install v<version>
+  nvm install v<version>
 ```
 
 ## Change version with NVM
 
 ```bash
-nvm use v<version>
+  nvm use v<version>
 ```
 
 ## Use specific version by default
 
 ```bash
-nvm alias default <version>
+  nvm alias default <version>
 ```
 
 ### Uninstall version
@@ -40,7 +40,7 @@ nvm alias default <version>
 ## Initialize new **Node** project
 
 ```bash
-npm init
+  npm init
 ```
 
 Entry point must be:
@@ -48,25 +48,26 @@ server.js
 
 ## Installer Nodemon
 
-$
-**npm** install -g nodemon
+```bash
+  npm install -g nodemon
+```
 
 ## Installer **Express**
 
 ```bash
-npm install express --save
+  npm install express --save
 ```
 
 ## Mongoose
 
 ```bash
-npm install mongoose
+  npm install mongoose
 ```
 
 ## Body parser
 
 ```bash
-npm install body-parser
+  npm install body-parser
 ```
 
 ---
@@ -76,19 +77,19 @@ npm install body-parser
 > cd /basics-node/front-end
 
 ```bash
-npm run start
+  npm run start
 ```
 
 > cd /basics-node/back-end
 
 ```bash
-nodemon server
+  nodemon server
 ```
 
 OR
 
 ```bash
-node server
+  node server
 ```
 
 ---
