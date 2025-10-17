@@ -229,3 +229,15 @@ OR
  qui permettent de définir les ports disponibles entre la machine host et le conteneur
 
 ---
+
+### Retrieve IP address of a container
+
+```bash
+  docker inspect nest-postgres | grep IPAddress
+```
+
+### Import SQL file in Postgres
+
+```bash
+ docker exec -i nest-postgres psql -U postgres -d nestdb < init.sql
+```
