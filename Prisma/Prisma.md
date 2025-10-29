@@ -1,6 +1,6 @@
 # Prisma ORM
 
-### **Commands Prisma (ecosysteme)**
+### Commands Prisma (ecosysteme)
 ```bash
   $ npx prisma generate     # Generate the client
   $ npx prisma validate     # Validates the schema
@@ -10,7 +10,7 @@
   $ npx prisma db push      # Synchronize the schema
 ```
 
-### **Client Prisma**
+### Client Prisma
 
 Generated client API:
 > - await prisma.role.create({ ... })
