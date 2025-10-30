@@ -1,4 +1,4 @@
-# DOCKER 🐳
+# 🐳 DOCKER
 
 ### Version
 
@@ -233,11 +233,11 @@ OR
 ### Retrieve IP address of a container
 
 ```bash
-  docker inspect nest-postgres | grep IPAddress
+  docker inspect <container-name> | grep IPAddress
 ```
 
 ### Import SQL file in Postgres
 
 ```bash
- docker exec -i nest-postgres psql -U postgres -d nestdb < init.sql
+ docker exec -i <container-name> psql -U <username> -d <database_name> < init.sql
 ```
