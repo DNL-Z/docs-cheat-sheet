@@ -1,6 +1,6 @@
-# **Node** JS
+# Node JS
 
-## Check current **Node** version
+## Check current Node version
 
 ```bash
   node --version
@@ -12,7 +12,7 @@
   nvm ls
 ```
 
-## Install new version
+## Install a new version
 
 ```bash
   nvm install v<version>
@@ -24,7 +24,7 @@
   nvm use v<version>
 ```
 
-## Use specific version by default
+## Use a specific version by default
 
 ```bash
   nvm alias default <version>
@@ -37,7 +37,7 @@
 
 ---
 
-## Initialize new **Node** project
+## Initialize a new Node project
 
 ```bash
   npm init
@@ -52,7 +52,7 @@ server.js
   npm install -g nodemon
 ```
 
-## Installer **Express**
+## Installer Express
 
 ```bash
   npm install express --save
