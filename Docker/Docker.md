@@ -1,5 +1,23 @@
 # 🐳 DOCKER
 
+**Docker** helps developers build, share, run, and verify applications anywhere — without tedious environment configuration or management.
+
+## 📑 Table of Contents
+
+- [📋 General Information](#-general-information)
+- [📦 Container Management](#-container-management)
+- [🖼️ Image Management](#-image-management)
+- [🗂️ Volume Management](#-volume-management)
+- [🌐 Network Management](#-network-management)
+- [🧹 Cleanup](#-cleanup)
+- [🐳 Docker Compose](#-docker-compose)
+- [🚀 Practical Examples](#-practical-examples)
+- [📄 Dockerfile - Main Directives](#-dockerfile---main-directives)
+- [📝 docker-compose.yml - Main Directives](#-docker-composeyml---main-directives)
+- [🛠️ System Utilities](#-system-utilities-inside-a-container)
+
+---
+
 ## 📋 General Information
 
 ### Version
