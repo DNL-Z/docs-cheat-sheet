@@ -1,57 +1,117 @@
-# GO
+# 🦦 GO
+
+Go is an open-source programming language that makes it easy to build simple, reliable, and efficient software.
+
+Go is fast, statically typed, compiled, and has built-in concurrency support.
+
+## 📑 Table of Contents
+- [✅ Version Check](#version-check)
+- [⚙️ Environment Setup](#environment-setup)
+- [🧪 Testing and Running](#testing-and-running)
+- [🎨 Code Formatting](#code-formatting)
+- [🐍 Cobra CLI Framework](#cobra-cli-framework)
+- [🗄️ Redis Integration](#redis-integration)
+
+---
+
+## ✅ Version Check
+
+### Check Go version
 
 ```bash
   go version
 ```
 
-### Go support (dans le fichier .zshrc)
+---
 
-> export GOPATH=/Users/vtch_zvtn/Dev/Go <br>
-> export GOPROXY=https://proxy.golang.org/ <br>
-> export PATH="$PATH:$GOPATH/bin"
+## ⚙️ Environment Setup
 
-### Go test
+### Go environment variables (in .zshrc or .bashrc)
 
 ```bash
-  go run « file_name.go »
+  export GOPATH=$HOME/go
+  export GOPROXY=https://proxy.golang.org/
+  export PATH="$PATH:$GOPATH/bin"
 ```
 
-Installation de GoLint
+---
+
+## 🧪 Testing and Running
+
+### Run a Go file
 
 ```bash
-  go fmt -w « name.go »
+  go run <file_name.go>
 ```
+
+### Build an executable
+
+```bash
+  go build -o <executable_name> main.go
+```
+
+### Build the project
+
+```bash
+  go build
+```
+
+⚠️ **Note**: Always rebuild after making modifications.
+
+### Run tests
+
+```bash
+  ./<executable_name> index <directory>
+  ./<executable_name> query test
+```
+
+---
+
+## 🎨 Code Formatting
+
+### Format Go code
+
+```bash
+  go fmt -w <name.go>
+```
+
+### Install GoLint
+
 ```bash
   go get -u golang.org/x/lint/golint
 ```
 
-### Cobra
+---
 
-Installation de Cobra
+## 🐍 Cobra CLI Framework
+
+### Install Cobra
 
 ```bash
   go get -u github.com/spf13/cobra/cobra
 ```
 
-Création de « go.mod » & « go.sum »
+### Initialize a Go module
+
+Create **go.mod** and **go.sum** files:
 
 ```bash
-  go mod init « name »
+  go mod init <module_name>
 ```
 
-Initialisation de module « search »
+### Initialize a Cobra project
 
 ```bash
-  cobra init --pkg-name « name »
+  cobra init --pkg-name <package_name>
 ```
 
-Création de  « go.sum »
+### Create go.sum file
 
 ```bash
   go mod tidy
 ```
 
-Ajouts de fichiers avec cobra, dans /cmd
+### Add command files with Cobra (in /cmd)
 
 ```bash
   cobra add dump
@@ -60,31 +120,28 @@ Ajouts de fichiers avec cobra, dans /cmd
   cobra add search
 ```
 
-Ajouts de fichiers : disk.go, redis.go, results.go, text.go à la main dans /engine
+### Manual file additions
 
-Créer un fichier executable « search »
+Manually add files like **disk.go**, **redis.go**, **results.go**, **text.go** in the **/engine** directory.
 
-```bash
-  go build -o « name » main.go
-```
+---
 
-Toujours rebuild, après les modifs
+## 🗄️ Redis Integration
 
-```bash
-  go build
-```
-
-Pour les tests
-
-```bash
-  ./« mon_executable » index <répertoire>
-  ./« mon_executable » query test
-```
-
-### Redis
+### Install Redis (macOS)
 
 ```bash
   brew install redis
+```
+
+### Start Redis service
+
+```bash
   brew services start redis
+```
+
+### Access Redis CLI
+
+```bash
   redis-cli
 ```
