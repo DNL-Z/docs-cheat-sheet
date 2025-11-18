@@ -3,16 +3,16 @@
 **.gitignore** is a text file that tells Git which files or folders to ignore in a project. It helps keep your repository clean by excluding files that shouldn't be version controlled, such as dependencies, build outputs, environment files, and system-specific files.
 
 ## 📑 Table of Contents
-- [📋 React/Next.js Template](#reactnextjs-template)
-- [📦 Dependencies](#dependencies)
-- [🧪 Testing](#testing)
-- [🏗️ Production](#production)
-- [📁 Miscellaneous](#miscellaneous)
-- [🐛 Debug Files](#debug-files)
-- [🔐 Environment Files](#environment-files)
-- [☁️ Vercel](#vercel)
-- [📘 TypeScript](#typescript)
-- [💡 JetBrains IDEs](#jetbrains-ides)
+- [📋 React/Next.js Template](#-reactnextjs-template)
+- [📦 Dependencies](#-dependencies)
+- [🧪 Testing](#-testing)
+- [🏗️ Production](#-production)
+- [📁 Miscellaneous](#-miscellaneous)
+- [🐛 Debug Files](#-debug-files)
+- [🔐 Environment Files](#-environment-files)
+- [☁️ Vercel](#-vercel)
+- [📘 TypeScript](#-typescript)
+- [💡 JetBrains IDEs](#-jetbrains-ides)
 
 ---
 
