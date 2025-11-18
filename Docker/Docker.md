@@ -1,234 +1,89 @@
 # 🐳 DOCKER
 
+## 📋 General Information
+
 ### Version
 
 ```bash
   docker --version
 ```
 
-### Créer un container « ubuntu »
+---
+
+## 📦 Container Management
+
+### Create an "ubuntu" container
 
 ```bash
   docker container run -it ubuntu bash
 ```
 
-### Lister les containers tous / allumés
+### List containers
 
 ```bash
+  # All containers
   docker container ls -a
+
+  # Only active containers
   docker container ps
 ```
 
-### Lister les images
+### Rename a container
 
 ```bash
-  docker image ls -a
+  docker rename <name_my_container> <my_new_name_container>
 ```
 
-### Renommer un container
+### Start a container
 
 ```bash
-  docker rename « name_my_container » « my_new_name_container »
+  docker start <name_my_container>
 ```
 
-### Supprimer un des container
+### Stop a container
 
 ```bash
-  docker container rm « name / id »
+  docker container stop <container_id>
 ```
 
-### Supprimer des containers, les images, les réseaux non utilisés, (-a) pour tous (all)
+### Remove a container
 
 ```bash
-  docker system prune -a
+  docker container rm <name_or_id>
 ```
 
-### Supprimer des images non utilisées, (-a) pour tout (all)
+### Launch bash in a container
 
 ```bash
-  docker images purge
-```
-
-### Commande à vérifier (???)
-
-```bash
-  docker-compose down --rmi all -v --remove-orphans
-```
-
-### Lancer mon docker-compose.yml
-
-```bash
-  docker-compose up -d
-```
-
-### Build mon docker-compose.yml
-
-```bash
-  docker-compose up --build
-```
-
-### Arrêter / supprimer le container ou docker-compose lancé
-
-```bash
-  docker container stop « id »
-```
-
-```bash
-  docker-compose stop « id »
-  docker-compose down « id »
-```
-
-### Installer « lsb-release »
-
-```bash
-  apt-get install -y lsb-release
-```
-
-### Voir lsb
-
-```bash
-  lsb_release -a
-```
-
-### Installer nginx
-
-```bash
-  apt-get install -y ngnix
-```
-
-### Voir nginx
-
-```bash
-  ngnix -v
-```
-
-### Lancer en local
-
-```bash
-  docker container run -d --rm -p 8080:80 --name web_1 nginx:1.14
+  docker exec -ti <container_name> bash
 ```
 
 OR
 
 ```bash
-  docker start « name_my_container »
+  docker container start -ia <container_name>
 ```
 
--d
- → pour détacher le conteneur du processus principal de la console
-(cela permet de continuer à utiliser la console pendant que votre conteneur tourne sur un autre processus)
-
--t
- → permet de donner un nom à votre image **Docker**
-
-### Lancer en local avec une page personnalisée avec le chemin indiqué
+### View container logs
 
 ```bash
-  docker container run -d --rm -p 8080:80 -v /Users/vtch_zvtn/Dev/Docker/docker-exercice-1/docker-volume/:/usr/share/nginx/html --name dnl_2 nginx:1.14
+  docker logs <container_name>
+  docker logs -f <container_name>  # follow logs in real-time
+  docker logs --tail 100 <container_name>  # display last 100 lines
 ```
 
-### Créer un network (qui permet de faire le lien entre 2 ou + de containers)
+### View container stats in real-time
 
 ```bash
-  docker network create « name_my_container »
+  docker stats
+  docker stats <container_name>
 ```
 
-### Pour trouver le chemin (???)
+### Inspect a container
 
 ```bash
-  docker container … $(pwd)/…
+  docker inspect <container_name>
 ```
-
-### Lancer Jenkins
-
-(si l’image existe)
-
-```bash
-  docker run -it -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins
-```
-
-### Lancer un bash du container
-
-```bash
-  docker exec -ti « name_my_container » bash
-```
-
-OR
-
-```bash
-  docker container start -ia « name_my_container »
-```
-
-### Lancer le bash de mon container php-fpm
-
-```bash
-  docker-compose exec (--user=root) php-fpm bash
-```
-
-### Créer une image personnalisée à partie d’un Dockerfile (dans le répertoire courant)
-
-```bash
-  docker build -t « image_name » .
-```
-
-OR
-(???)
-
-```bash
-  docker image build -t « image_name » .
-```
-
----
-
-### Dockerfile
-
-**FROM**
- qui vous permet de définir l'image source
-
-**RUN**
- qui vous permet d’exécuter des commandes dans votre conteneur
-
-**ADD**
- qui vous permet d'ajouter des fichiers dans votre conteneur
-
-**WORKDIR**
- qui vous permet de définir votre répertoire de travail
-
-**EXPOSE**
- qui permet de définir les ports d'écoute par défaut
-
-**VOLUME**
- qui permet de définir les volumes utilisables
-
-**CMD**
- qui permet de définir la commande par défaut lors de l’exécution de vos conteneurs **Docker**
-
----
-
-### docker-compose.yml
-
-**image**
- qui permet de spécifier l'image source pour le conteneur
-
-**build**
- qui permet de spécifier le Dockerfile source pour créer l'image du conteneur
-
-**volume**
- qui permet de spécifier les points de montage entre le système hôte et les conteneurs
-
-**restart**
- qui permet de définir le comportement du conteneur en cas d'arrêt du processus
-
-**environment**
- qui permet de définir les variables d’environnement
-
-**depends_on**
- qui permet de dire que le conteneur dépend d'un autre conteneur
-
-**ports**
- qui permettent de définir les ports disponibles entre la machine host et le conteneur
-
----
 
 ### Retrieve IP address of a container
 
@@ -236,8 +91,268 @@ OR
   docker inspect <container-name> | grep IPAddress
 ```
 
-### Import SQL file in Postgres
+---
+
+## 🖼️ Image Management
+
+### List images
 
 ```bash
- docker exec -i <container-name> psql -U <username> -d <database_name> < init.sql
+  docker image ls -a
 ```
+
+### Create a custom image from a Dockerfile
+
+```bash
+  docker build -t <image_name> .
+```
+
+OR
+
+```bash
+  docker image build -t <image_name> .
+```
+
+### Remove unused images
+
+```bash
+  docker image prune -a
+```
+
+---
+
+## 🗂️ Volume Management
+
+```bash
+  # List volumes
+  docker volume ls
+
+  # Create a volume
+  docker volume create <volume_name>
+
+  # Inspect a volume
+  docker volume inspect <volume_name>
+
+  # Remove a volume
+  docker volume rm <volume_name>
+
+  # Remove all unused volumes
+  docker volume prune
+```
+
+---
+
+## 🌐 Network Management
+
+### Create a network
+
+```bash
+  docker network create <network_name>
+```
+
+### List and manage networks
+
+```bash
+  # List networks
+  docker network ls
+
+  # Inspect a network
+  docker network inspect <network_name>
+
+  # Remove a network
+  docker network rm <network_name>
+
+  # Remove all unused networks
+  docker network prune
+```
+
+---
+
+## 🧹 Cleanup
+
+### Remove unused containers, images, networks
+
+```bash
+  docker system prune -a
+```
+
+---
+
+## 🐳 Docker Compose
+
+### Launch docker-compose.yml
+
+```bash
+  docker compose up -d
+```
+
+### Build docker-compose.yml
+
+```bash
+  docker compose up --build
+```
+
+### Stop / Remove services
+
+```bash
+  docker compose stop <service_name>
+  docker compose down
+```
+
+### Completely remove (containers, images, volumes, orphan networks)
+
+```bash
+  docker compose down --rmi all -v --remove-orphans
+```
+
+### View docker compose logs
+
+```bash
+  docker compose logs
+  docker compose logs -f <service_name>
+```
+
+### Restart services
+
+```bash
+  docker compose restart
+  docker compose restart <service_name>
+```
+
+### Pull images
+
+```bash
+  docker compose pull
+```
+
+### Launch bash in a service
+
+```bash
+  docker compose exec (--user=root) php-fpm bash
+```
+
+---
+
+## 🚀 Practical Examples
+
+### Launch nginx locally
+
+```bash
+  docker container run -d --rm -p 8080:80 --name web_1 nginx:1.14
+```
+
+**Options:**
+- `-d` : detach container from a main console process
+- `-t` : allows naming your Docker image
+- `--rm` : automatically remove container on stop
+- `-p` : map ports (host:container)
+
+### Launch nginx with a custom page
+
+```bash
+  docker container run -d --rm -p 8080:80 -v /path/to/your/html:/usr/share/nginx/html --name web_custom nginx:1.14
+```
+
+### Use the current directory in a command
+
+```bash
+  docker container run -v $(pwd):/app <image_name>
+```
+
+### Launch Jenkins
+
+```bash
+  docker run -it -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins
+```
+
+### Import SQL file into Postgres
+
+```bash
+  docker exec -i <container-name> psql -U <username> -d <database_name> < init.sql
+```
+
+---
+
+## 📄 Dockerfile - Main Directives
+
+**FROM**
+ → define the source image
+
+**RUN**
+ → execute commands in your container
+
+**ADD** / **COPY**
+ → add files to your container
+
+**WORKDIR**
+ → define your working directory
+
+**EXPOSE**
+ → define default listening ports
+
+**VOLUME**
+ → define usable volumes
+
+**CMD**
+ → define default command when executing the container
+
+**ENTRYPOINT**
+ → define the main executable of the container
+
+---
+
+## 📝 docker-compose.yml - Main Directives
+
+**image**
+ → specify source image for the container
+
+**build**
+ → specify source Dockerfile to create the container image
+
+**volumes**
+ → specify mount points between a host system and containers
+
+**restart**
+ → define container behavior on process stop
+
+**environment**
+ → define environment variables
+
+**depends_on**
+ → indicate that the container depends on another container
+
+**ports**
+ → define available ports between host machine and container
+
+**networks**
+ → define networks to which the container belongs
+
+---
+
+## 🛠️ System Utilities (inside a container)
+
+### Install lsb-release
+
+```bash
+  apt-get install -y lsb-release
+```
+
+### View lsb
+
+```bash
+  lsb_release -a
+```
+
+### Install nginx
+
+```bash
+  apt-get install -y nginx
+```
+
+### View nginx
+
+```bash
+  nginx -v
+```
+
+---
