@@ -9,10 +9,10 @@ It simplifies the installation of software on Apple's operating system and Linux
 **Casks** are pre-compiled applications that are installed with minimal transformation.
 
 ## 📑 Table of Contents
-- [🔍 Information](#information)
-- [🔧 Maintenance](#maintenance)
-- [📦 Package Management](#package-management)
-- [🎯 Cask Management](#cask-management)
+- [🔍 Information](#-information)
+- [🔧 Maintenance](#-maintenance)
+- [📦 Package Management](#-package-management)
+- [🎯 Cask Management](#-cask-management)
 
 ---
 
