@@ -1,29 +1,45 @@
-# PERMISSIONS - DROITS D’ACCES BASH
+# 🔑 File Permissions
 
-r
- : droit de lecture (read) =
-4
+Command-line utilities for managing file and directory permissions in Unix-based systems, including access rights modification and ownership management.
 
-w
- : droit d'écriture (write) =
-2
+## 📑 Table of Contents
 
-x
- : droit d'exécution (execute) =
-1
+- [📊 Permission Values](#-permission-values)
+- [🔧 Changing Permissions](#-changing-permissions)
+- [👤 Changing Ownership](#-changing-ownership)
 
-## Pour changer les
+---
 
-droits d’accès
+## 📊 Permission Values
 
-```bash
-sudo chmod -R 775 /folder_name
+**Basic permission values**
+
+```
+r: read permission = 4
+w: write permission = 2
+x: execute permission = 1
 ```
 
-## Pour changer le
+---
 
-propriétaire/groupe
+## 🔧 Changing Permissions
+
+### Recursively Change Permissions
+
+**Apply permissions recursively to a folder and its contents**
 
 ```bash
-sudo chown -R proprietaire:groupe /folder_name
+  sudo chmod -R 775 /folder_name
+```
+
+---
+
+## 👤 Changing Ownership
+
+### Change Owner and Group
+
+**Change the owner and group recursively for a folder**
+
+```bash
+  sudo chown -R owner:group /folder_name
 ```
