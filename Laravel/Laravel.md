@@ -1,7 +1,7 @@
 # LARAVEL
 
-## Pour lancer le serveur
+## Start server
 
 ```bash
-php artisan serve
+  php artisan serve
 ```
