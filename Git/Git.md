@@ -1,133 +1,117 @@
-# GIT
+# ⛓️ GIT
 
-### Configuration file 
-
-**.gitconfig**
-
-> [user]
->
->> name = DNL <br>
->> email = danylo.zhalkovskyy@icloud.com <br>
->
-> [core]
->
->> autocrlf = input <br>
->
-> [pull]
->
->> ff = only <br>
->> rebase = true
+## 📑 Table of Contents
+- [📥 Installation](#installation)
+- [⚙️ Configuration](#configuration)
+- [🔑 SSH Keys](#ssh-keys)
+- [🌐 Remote Repository](#remote-repository)
+- [📝 Basic Commands](#basic-commands)
+- [🌿 Branches](#branches)
+- [📦 Staging and Committing](#staging-and-committing)
+- [💾 Stash](#stash)
+- [👁️ Viewing Changes](#viewing-changes)
+- [🔧 Advanced Operations](#advanced-operations)
 
 ---
 
-### Pour savoir si le projet est connecté à un remote (comme GitHub)
+## 📥 Installation
+
+### macOS
+
 ```bash
-  git remote -v
+  brew install git
 ```
 
+### Linux (Ubuntu/Debian)
 
-### Générer les clés « id_rsa » et « id_rsa.pub » dans le dossier ~/.ssh
+```bash
+  sudo apt update
+  sudo apt install git
+```
+
+### Linux (Fedora)
+
+```bash
+  sudo dnf install git
+```
+
+### Windows
+
+Download from [git-scm.com](https://git-scm.com/download/win) or use:
+
+```bash
+  winget install --id Git.Git -e --source winget
+```
+
+### Verify installation
+
+```bash
+  git --version
+```
+
+---
+
+## ⚙️ Configuration
+
+### Configuration file
+
+**.gitconfig**
+
+```ini
+[user]
+    name = Your Name
+    email = your.email@example.com
+
+[core]
+    autocrlf = input
+
+[pull]
+    ff = only
+    rebase = true
+```
+
+### Use different email for a specific directory
+
+Add this to your main **~/.gitconfig** file:
+
+```ini
+[includeIf "gitdir:~/Specific-Folder/Dev/"]
+    path = ~/.gitconfig-specific-folder
+```
+
+Then create a **~/.gitconfig-specific-folder** file with:
+
+```ini
+[user]
+    email = your.work@email.com
+```
+
+---
+
+## 🔑 SSH Keys
+
+### Generate SSH keys (id_rsa and id_rsa.pub) in the ~/.ssh directory
 
 ```bash
   ssh-keygen -t rsa
 ```
 
-### Cloner un repository en local
+The public key **~/.ssh/id_rsa.pub** must be registered on your **Git** account.
+
+---
+
+## 🌐 Remote Repository
+
+### Check if the project is connected to a remote (like GitHub)
 
 ```bash
-  git clone « address SSH ou HTTPS »
+  git remote -v
 ```
 
-### Afficher l'état des fichiers : modifiés, ajoutés, supprimés
+### Clone a repository locally
 
 ```bash
-  git status
-```
-
-### Lister toutes les branch
-
-```bash
-  git branch -a
-```
-
-### Supprimer une branch
-
-```bash
-  git branch -d « branch_name »
-```
-
-### Voir les modifications faites d’un fichier
-
-```bash
-  git diff « file_name »
-```
-
-### Ajouter le fichier en vue d'un commit
-
-```bash
-  git add « file_name »
-```
-
-### Annuler le fichier add
-
-```bash
-  git reset « file_name »
-```
-
-### La commande magique, qui est le fonctionnement de git add en interactif
-Il est possible de sélectionner les lignes exactes que tu veux commiter, et pas forcément la totalité du fichier.
-
-```bash
-  git add -i
-```
-
-### Annuler les modifications d’un fichier
-
-```bash
-  git checkout « file_name »
-```
-
-### Supprimer le fichier en vue d'un commit
-Si je supprime un fichier manuellement, mais qu’il est déjà sur repository git, ça ne va pas forcément le supprimer.
-
-```bash
-  git rm « file_name »
-```
-
-### Mettre en ligne les modifications
-
-```bash
-  git add « file_name » OR « . »
-  git commit -m « initial commit »
-  git push
-```
-
-### Modifier un commit local
-
-```bash
-  git commit —amend
-```
-
-### Annuler le dernier commit (?)
-
-```bash
-  git reset HEAD « file_name »
-  git reset HEAD^1
-```
-
-### Push un projet local vers un repository
-
-La clé publique **~/.ssh/id_rsa.pub**, doit être enregistrer sur le compte **Git**.
-
-```bash
-  git init --initial-branch=master OR main
-```
-
-```bash
-  git remote add origin « url_ssh_repository_project »
-  git add .
-  git commit -m « Initial commit »
-  git push -u origin master OR main
+  git clone <SSH_or_HTTPS_address>
 ```
 
 ### Set up GitHub Token
@@ -136,130 +120,337 @@ La clé publique **~/.ssh/id_rsa.pub**, doit être enregistrer sur le compte **G
   git remote set-url origin https://<githubtoken>@github.com/<username>/<repositoryname>.git
 ```
 
-### Connaître la branch sur laquelle j’y suis
+### Push a local project to a repository
 
 ```bash
-  git branch
+  git init --initial-branch=main
 ```
-
-### Créer une branch (autre que master/main)
 
 ```bash
-  git branch « branch_name »
+  git remote add origin <ssh_url_repository_project>
+  git add .
+  git commit -m "Initial commit"
+  git push -u origin main
 ```
 
-### Se connecter sur une autre branch
+---
+
+## 📝 Basic Commands
+
+### Show the status of files: modified, added, deleted
 
 ```bash
-  git checkout « branch_name »
-```
-```bash
-  git checkout -b « branch_name » (?)
+  git status
 ```
 
-### Stocker les fichiers modifier en local, pour effectuer d’autres tâches
+### View changes made to a file
 
 ```bash
-  git stash
+  git diff <file_name>
 ```
 
-### Supprimer les fichiers stashed
-
-```bash
-  git stash clear
-```
-
-### Lister les fichiers stashed
-
-```bash
-  git stash list
-```
-
-### Montrer les fichiers stashed
-
-```bash
-  git stash show
-```
-
-### Récupérer ensuite les modifications stashed
-
-```bash
-  git stash pop
-```
-
-### Récupérer les derniers commits sur la branche courante
+### Pull the latest commits on the current branch
 
 ```bash
   git pull
 ```
 
- git pull = git fetch + git merge
+Note: `git pull` = `git fetch` + `git merge`
 
-### Récupérer les modifs de la branch master, si je suis sur une autre branche
-
-```bash
-  git pull origin master
-```
-
-### Afficher les derniers commits
+### Pull changes from the main branch while on another branch
 
 ```bash
-  git log
+  git pull origin main
 ```
 
-### Afficher un commit spécifique
-
-```bash
-  git show
-```
-
-### Récupérer les branches et leurs commits distants (avant de merge)
+### Fetch remote branches and their commits (before merging)
 
 ```bash
   git fetch
 ```
 
-### Merge les branches
+---
+
+## 🌿 Branches
+
+### List all branches
 
 ```bash
-  git checkout master OR main
- ```
-
-```bash
-  git pull origin master
-  git merge « branch_name »
-  git push origin master
+  git branch -a
 ```
 
-### Merge les branches avec des conflits
+### Show the current branch
 
 ```bash
-  git checkout « branch_name_to_merge »
+  git branch
 ```
+
+### Create a new branch
 
 ```bash
-  git pull origin master
+  git branch <branch_name>
 ```
 
-=> à ce moment il y a des conflits, donc il faut les régler + check si ça fonctionne (!!!)
+### Switch to another branch
+
+```bash
+  git switch <branch_name>
+```
+
+Or using the older syntax:
+
+```bash
+  git checkout <branch_name>
+```
+
+### Create and switch to a new branch
+
+```bash
+  git switch -c <branch_name>
+```
+
+Or using the older syntax:
+
+```bash
+  git checkout -b <branch_name>
+```
+
+### Delete a branch
+
+```bash
+  git branch -d <branch_name>
+```
+
+### Delete a remote branch
+
+```bash
+  git push origin --delete <branch_name>
+```
+
+---
+
+## 📦 Staging and Committing
+
+### Stage a file for commit
+
+```bash
+  git add <file_name>
+```
+
+### Stage all changes
 
 ```bash
   git add .
-  git commit -m « merge master »
+```
+
+### Interactive staging (select specific lines to commit)
+
+```bash
+  git add -i
+```
+
+This allows you to select the exact lines you want to commit, not necessarily the entire file.
+
+### Unstage a file
+
+```bash
+  git restore --staged <file_name>
+```
+
+Or using the older syntax:
+
+```bash
+  git reset <file_name>
+```
+
+### Discard changes in a file
+
+```bash
+  git restore <file_name>
+```
+
+Or using the older syntax:
+
+```bash
+  git checkout <file_name>
+```
+
+### Remove a file and stage the deletion
+
+If you delete a file manually, but it's already in the git repository, it won't automatically be deleted from the repository.
+
+```bash
+  git rm <file_name>
+```
+
+### Commit changes
+
+```bash
+  git commit -m "commit message"
+```
+
+### Push changes online
+
+```bash
+  git add <file_name>  # or use . for all files
+  git commit -m "commit message"
   git push
 ```
 
-=> à ce moment là « branch_name_to_merge » devient à jour avec master
-=> valider la PR + merge
+### Amend the last local commit
 
-### Rebase les commits locaux au-dessus de origin/dev, conservant les commits locaux
+```bash
+  git commit --amend
+```
+
+### Undo the last commit (keeping changes)
+
+```bash
+  git reset HEAD^
+```
+
+⚠️ **Warning**: Use with caution. This removes the commit but keeps the changes in your working directory.
+
+### Undo the last commit (discarding changes)
+
+```bash
+  git reset --hard HEAD^
+```
+
+⚠️ **Warning**: This is destructive and will permanently delete your changes.
+
+---
+
+## 💾 Stash
+
+### Stash locally modified files to work on other tasks
+
+```bash
+  git stash
+```
+
+### List stashed files
+
+```bash
+  git stash list
+```
+
+### Show stashed changes
+
+```bash
+  git stash show
+```
+
+### Apply stashed changes
+
+```bash
+  git stash pop
+```
+
+### Clear all stashed files
+
+```bash
+  git stash clear
+```
+
+---
+
+## 👁️ Viewing Changes
+
+### Show commit history
+
+```bash
+  git log
+```
+
+### Show a pretty formatted commit history
+
+```bash
+  git log --oneline --graph --decorate
+```
+
+### Show a specific commit
+
+```bash
+  git show <commit_hash>
+```
+
+### Show the last commit
+
+```bash
+  git show
+```
+
+---
+
+## 🔧 Advanced Operations
+
+### Merge branches
+
+```bash
+  git switch main
+  git pull origin main
+  git merge <branch_name>
+  git push origin main
+```
+
+### Merge branches with conflicts
+
+1. Switch to the branch you want to merge:
+
+```bash
+  git switch <branch_name_to_merge>
+```
+
+2. Pull changes from the main:
+
+```bash
+  git pull origin main
+```
+
+3. At this point there are conflicts - resolve them and test that everything works (!)
+
+4. Commit the merge:
+
+```bash
+  git add .
+  git commit -m "merge main"
+  git push
+```
+
+5. Now `<branch_name_to_merge>` is up to date with main
+6. Validate the PR and merge
+
+### Rebase local commits on top of origin/dev (keeping local commits)
 
 ```bash
   git rebase origin/dev
 ```
 
-### Réinitialise complètement la branche locale pour qu'elle corresponde exactement à origin/dev, supprimant les commits locaux
+### Interactive rebase (reorder, squash, edit commits)
+
+```bash
+  git rebase -i HEAD~<number_of_commits>
+```
+
+### Completely reset the local branch to match origin/dev (removing local commits)
 
 ```bash
   git reset --hard origin/dev
 ```
+
+⚠️ **Warning**: This is destructive and will permanently delete your local commits.
+
+### Cherry-pick a specific commit
+
+```bash
+  git cherry-pick <commit_hash>
+```
+
+### Force push (use with extreme caution)
+
+```bash
+  git push --force
+```
+
+⚠️ **Warning**: Never force push to shared branches (main/master) as it rewrites history and can cause issues for other developers.
