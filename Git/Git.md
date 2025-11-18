@@ -1,20 +1,20 @@
 # ⛓️ GIT
 
-Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
+**Git** is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
 Git is lightning fast and has a huge ecosystem of GUIs, hosting services, and command-line tools.
 
 ## 📑 Table of Contents
-- [📥 Installation](#installation)
-- [⚙️ Configuration](#configuration)
-- [🔑 SSH Keys](#ssh-keys)
-- [🌐 Remote Repository](#remote-repository)
-- [📝 Basic Commands](#basic-commands)
-- [🌿 Branches](#branches)
-- [📦 Staging and Committing](#staging-and-committing)
-- [💾 Stash](#stash)
-- [👁️ Viewing Changes](#viewing-changes)
-- [🔧 Advanced Operations](#advanced-operations)
+- [📥 Installation](#-installation)
+- [⚙️ Configuration](#-configuration)
+- [🔑 SSH Keys](#-ssh-keys)
+- [🌐 Remote Repository](#-remote-repository)
+- [📝 Basic Commands](#-basic-commands)
+- [🌿 Branches](#-branches)
+- [📦 Staging and Committing](#-staging-and-committing)
+- [💾 Stash](#-stash)
+- [👁️ Viewing Changes](#-viewing-changes)
+- [🔧 Advanced Operations](#-advanced-operations)
 
 ---
 
