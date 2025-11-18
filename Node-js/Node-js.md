@@ -2,6 +2,21 @@
 
 **Node.js** is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
+## 📑 Table of Contents
+
+- [🔧 NVM (Node Version Manager)](#-nvm-node-version-manager)
+- [📦 NPM & Package Management](#-npm--package-management)
+- [🔌 Popular Packages](#-popular-packages)
+- [🌍 Environment Variables](#-environment-variables)
+- [🚀 Running Node Applications](#-running-node-applications)
+- [🌐 REST API Fundamentals](#-rest-api-fundamentals)
+- [🔀 HTTP Methods](#-http-methods)
+- [📊 HTTP Status Codes](#-http-status-codes)
+- [📥 Request Structure](#-request-structure)
+- [📤 Response Structure](#-response-structure)
+- [🚀 Express API Examples](#-express-api-examples)
+- [✅ API Best Practices](#-api-best-practices)
+
 ---
 
 ## 🔧 NVM (Node Version Manager)
@@ -181,7 +196,7 @@ const port = process.env.PORT || 3000;
 
 ---
 
-## 🌐 REST API - Fundamentals
+## 🌐 REST API Fundamentals
 
 ### What is a REST API?
 
