@@ -1,6 +1,29 @@
 # 🗄️ SQL
 
-Structured Query Language.
+**Structured Query Language**.
+
+## 📑 Table of Contents
+
+- [🔌 Connect to the Database with MySQL](#-connect-to-the-database-with-mysql)
+- [🧩 Some Core Examples](#-some-core-examples)
+  - [🔍 SELECT Queries](#-select-queries)
+  - [🧮 Aggregation & Grouping](#-aggregation--grouping)
+  - [🔗 Joins](#-joins)
+  - [✍🏼 Insert / Update / Delete / Truncate](#-insert--update--delete--truncate)
+  - [🧱 Table Management (ALTER, CREATE, DROP)](#-table-management-alter-create-drop)
+  - [⚙️ Database & Table Information](#-database--table-information)
+  - [🔍 Subqueries](#-subqueries)
+  - [🔐 Constraints & Foreign Keys](#-constraints--foreign-keys)
+  - [🔢 CASE WHEN (Conditional Logic)](#-case-when-conditional-logic)
+  - [📊 Views](#-views)
+  - [🔐 Indexes (Performance Optimization)](#-indexes-performance-optimization)
+  - [🔄 Transactions](#-transactions)
+- [🧱 Data Types Overview](#-data-types-overview)
+- [🧰 Common Built-in Functions](#-common-built-in-functions)
+- [🔒 Security Best Practices](#-security-best-practices)
+- [📥 Import the Database from a .sql file](#-import-the-database-from-a-sql-file)
+- [📤 Export the Database to a .sql file](#-export-the-database-to-a-sql-file)
+- [🐘 Local MAMP](#-local-mamp)
 
 ## 🔌 Connect to the Database with MySQL
 
