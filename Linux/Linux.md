@@ -1,21 +1,62 @@
-# LINUX - SHELL
+# 🐧 Linux Shell
 
-## Basics
+Command-line interface and shell utilities for Linux operating systems, including file management, SSH, compression, permissions, and scripting.
 
-### Retourner au répertoire de l’utilisateur / à la racine
+## 📑 Table of Contents
+
+- [📂 File System Basics](#-file-system-basics)
+  - [Navigation](#navigation)
+  - [File Operations](#file-operations)
+  - [Directory Operations](#directory-operations)
+  - [File Search and Filtering](#file-search-and-filtering)
+- [🔐 SSH (Secure Shell)](#-ssh-secure-shell)
+  - [Connect to SSH](#connect-to-ssh)
+- [📦 SCP (Secure Copy Protocol)](#-scp-secure-copy-protocol)
+  - [Transfer Files](#transfer-files)
+- [🗜️ Compression & Decompression](#-compression--decompression)
+  - [Decompress Files](#decompress-files)
+  - [Compress Files](#compress-files)
+- [🔑 Access Permissions](#-access-permissions)
+  - [Permission Values](#permission-values)
+  - [Changing Permissions](#changing-permissions)
+  - [Changing Ownership](#changing-ownership)
+- [📜 Scripts](#-scripts)
+  - [Script Execution](#script-execution)
+  - [Script Permissions](#script-permissions)
+  - [Comparison Operators](#comparison-operators)
+- [🛠️ Advanced Commands](#-advanced-commands)
+  - [Text Processing](#text-processing)
+  - [Log Analysis](#log-analysis)
+  - [Pattern Matching](#pattern-matching)
+
+---
+
+## 📂 File System Basics
+
+### Navigation
+
+**Return to the user home directory or root directory**
 
 ```bash
   cd ~
   cd /
 ```
 
-### Lister tous les « process status »
+**Show the current path**
+
+```bash
+  pwd
+```
+
+### File Operations
+
+**List all processes (process status)**
 
 ```bash
   ps
 ```
 
-### Lister les fichiers & les fichiers cachés / tri
+**List files including hidden files**
 
 ```bash
   ls -la
@@ -23,61 +64,69 @@
   tree -I 'node_modules'
 ```
 
-### Créer un fichier vide
+**Create an empty file**
 
 ```bash
   touch <file_name>
 ```
 
-### Ecrire / créer dans le fichier
+**Write or create content in a file**
 
 ```bash
   nano <file_name>
 ```
 
-### Créer un dossier vide
-
-```bash
-  mkdir <folder_name>
-```
-
-### Créer un dossier d’arborescence
-
-```bash
-  mkdir -p 1/3/6/2/6/8
-```
-
-### Copier des fichiers ou des répertoires
+**Copy files or directories**
 
 ```bash
   cp <source> <directory>
 ```
 
-### Renommer ou déplacer un fichier ou un dossier
+**Rename or move a file or folder**
 
 ```bash
   mv <source> <directory>
 ```
 
-### Créer des liens durs et liens symboliques
+**Create hard links and symbolic links**
 
 ```bash
   ln <source> <directory>
 ```
 
-### Supprimer un fichier
+**Delete a file**
 
 ```bash
   rm <file_or_directory>
 ```
 
-### Effacer un chemin/dossier
+### Directory Operations
+
+**Create an empty directory**
+
+```bash
+  mkdir <folder_name>
+```
+
+**Create nested directory structure**
+
+```bash
+  mkdir -p 1/3/6/2/6/8
+```
+
+**Create a directory in the user's home directory**
+
+```bash
+  mkdir ~root/temporary_directory
+```
+
+**Delete an empty directory**
 
 ```bash
   rmdir /tmp/<directory_name>
 ```
 
-### Effacer un dossier et tout le contenu récursivement
+**Delete a directory and all its contents recursively**
 
 (remove directories and their contents recursively: -r, -R, --recursive)
 
@@ -85,222 +134,266 @@
   rm -r /tmp/<folder_name>
 ```
 
-### Trouver un fichier
+### File Search and Filtering
+
+**Find a file**
 
 ```bash
   find / -name <file_name> (-print)
 ```
 
-### Lister les répertoires /etc et /bin
+**List directories /etc and /bin**
 
 ```bash
   ls /etc /bin
 ```
 
-### Lister le contenu
+**List content and redirect to the file**
 
 ```bash
   ls /etc > tmp/configurations.log
 ```
 
-### Lister avec une majuscule dans /etc
+**List files starting with uppercase letter in /etc**
 
 ```bash
   ls /etc/[A-Z]*
-  ls /etc |grep [A-Z]*
+  ls /etc | grep [A-Z]*
 ```
 
-### Créer un dossier dans le répertoire de l’utilisateur
+**List files containing a digit**
 
 ```bash
-  mkdir ~root/temporary_directory
+  ls /var/log | grep [0-9]
+  ls /var/log/*[0-9]*
 ```
 
-### Savoir le chemin actuel
+**Common text processing commands:**
 
-```bash
-  pwd
-```
-
-**sort** => sort lines of text files
-
-**grep** => print lines matching a pattern
-
-**cut** => remove sections from each line of files
+- **sort** : sort lines of text files
+- **grep** : print lines matching a pattern
+- **cut** : remove sections from each line of files
 
 ---
 
-## SSH
+## 🔐 SSH (Secure Shell)
 
-**GCP** = Google Cloud Platform
+### Connect to SSH
 
-### Se connecter à SSH de GCP
+**Basic SSH connection**
 
 ```bash
   ssh user@ip_address
-  ssh danylo_zhalkovskyy@62.39.143.50
-  ssh -i ~.ssh/id_rsa_prod admin_web@198.168.10.4
+```
+
+**SSH connection with a specific key**
+
+```bash
+  ssh -i ~/.ssh/id_rsa_prod user@ip_address
+```
+
+**Generate SSH RSA key**
+
+```bash
+  ssh-keygen -t rsa -b 1024 -f ~/.ssh/id_rsa_eval -N protected
 ```
 
 ---
 
-## Secure Copy Protocol
+## 📦 SCP (Secure Copy Protocol)
 
-### Transférer / Récupérer un répertoire distant en local (-r pour récursive, c'est-à-dire tout le dossier)
+### Transfer Files
+
+**Transfer/Download a remote directory to local (-r for recursive, i.e., entire folder)**
 
 ```bash
-  scp -r user@server.com:/path/of/external/folder(source) /path/of/local/folder(destination)
+  scp -r user@server.com:/path/of/external/folder /path/of/local/folder
 ```
 
-### Transférer / Récupérer un répertoire local en distant
+**Transfer/Upload a local directory to remote**
 
 ```bash
-  scp -r name/of/folder/on/my/mac user@ip_address:/name/of/folder/on/my/instance
+  scp -r /local/folder user@ip_address:/remote/folder
 ```
 
 ---
 
-## Compressions / Décompression
+## 🗜️ Compression & Decompression
 
-### Décompresser un fichier en BZ
+### Decompress Files
+
+**Decompress a BZ2 file**
 
 ```bash
   bzcat access.log.bz2
 ```
 
-### Décompresser un fichier en GZIP
+**Decompress a GZIP file**
 
 ```bash
   gzip access.log.gz
 ```
 
-### Décompresser un fichier en TGZ
+**Decompress a TGZ file**
 
 ```bash
-  tar xzvf <nom_archive>.tar.gz
+  tar xzvf <archive_name>.tar.gz
 ```
 
-### Compresser un fichier en TAR.GZ
+### Compress Files
+
+**Compress to TAR.GZ**
 
 ```bash
-  tar czvf <nom_archive>.tar.gz <nom_rep>
+  tar czvf <archive_name>.tar.gz <directory_name>
 ```
 
 ---
 
-## Droits d’accès
+## 🔑 Access Permissions
 
-    r: droit de lecture (read) = 4
-    w: droit d'écriture (write) = 2
-    x: droit d'exécution (execute) = 1
+### Permission Values
 
-### Changer les droits d’un fichier
-
-```bash
-  chmod 117 oss.txt
+```
+r: read permission = 4
+w: write permission = 2
+x: execute permission = 1
 ```
 
-### Rendre un script exécutable
+### Changing Permissions
+
+**Change file permissions**
+
+```bash
+  chmod 117 file.txt
+```
+
+**Make a script executable**
 
 ```bash
   chmod +x <script.sh>
 ```
 
----
-
-## Scripts
-
-### Exécuter un script
-
-```bash
-  ./<script.sh>
-```
-
-### Débogage du script
-
-```bash
-  bash -x <script.sh>
-```
-
-### Donner le droit d’exécution pour l’utilisateur au fichier script.sh
+**Grant execution right to user for script.sh**
 
 ```bash
   chmod u+x script.sh
 ```
 
-### Changer les droits du script
+**Change script permissions for multiple users**
 
 ```bash
-  chmod u+x, g+x, o-x script.sh
+  chmod u+x,g+x,o-x script.sh
 ```
 
-### Changer le groupe en « Ubuntu », pour tous les fichiers du répertoire /src dans le répertoire de l’utilisateur
-
-```bash
-  chown :ubuntu ~/src
-```
-
-### Pour changer les droits d’accès :
+**Recursively change permissions**
 
 ```bash
   sudo chmod -R 775 /folder_name
 ```
 
-### Pour changer le proprietaire/groupe :
+### Changing Ownership
+
+**Change group to "ubuntu" for all files in the /src directory**
 
 ```bash
-  sudo chown -R proprietaire:groupe /folder_name
+  chown :ubuntu ~/src
 ```
 
-### Signes mathématiques pour les scripts
+**Change owner and group**
 
-    -lt => < <br>
-    -le => =< <br>
-    -gt => > <br>
-    -ge => => <br>
-    -eq => = <br>
+```bash
+  sudo chown -R owner:group /folder_name
+```
 
-### Afficher les 100 premières lignes du fichier <listing.csv.bz2>
+---
+
+## 📜 Scripts
+
+### Script Execution
+
+**Execute a script**
+
+```bash
+  ./<script.sh>
+```
+
+**Debug script execution**
+
+```bash
+  bash -x <script.sh>
+```
+
+### Script Permissions
+
+**Grant execution permission to the user for script.sh**
+
+```bash
+  chmod u+x script.sh
+```
+
+**Modify script permissions**
+
+```bash
+  chmod u+x,g+x,o-x script.sh
+```
+
+### Comparison Operators
+
+**Mathematical operators for scripts**
+
+```
+-lt  =>  <   (less than)
+-le  =>  <=  (less than or equal)
+-gt  =>  >   (greater than)
+-ge  =>  >=  (greater than or equal)
+-eq  =>  =   (equal)
+```
+
+---
+
+## 🛠️ Advanced Commands
+
+### Text Processing
+
+**Display the first 100 lines of a file**
 
 ```bash
   bzcat listing.csv.bz2 | head -100
   bzcat listing.csv.bz2 | head -n 100
 ```
 
-### Top 100 croissant du nombre d’occurrences uniques du 6ème champ du fichier nasa.tsv
+**Top 100 ascending count of unique occurrences from the 6th field**
 
 ```bash
-  cut -f 6 nasa.tsv | sort | uniq -c | sort | tail 5
+  cut -f 6 nasa.tsv | sort | uniq -c | sort | tail -n 5
 ```
 
-### Compter le nombre d’occurrences de chaque date et heure de création uniques du répertoire /dev
+**Count occurrences of each unique creation date and time in /dev directory**
 
 ```bash
-  ls -l /dev | cut -c 36-47 | sort | unic cachés
+  ls -l /dev | cut -c 36-47 | sort | uniq -c
 ```
 
-### Générer une clé SSH RSA de 1024
+### Log Analysis
 
-```bash
-  ssh-keygen -t rsa -b 1024 -f ~./ssh/id_rsa_eval -N protected
-```
-
-### Pour les top 5 articles du log
+**Top 5 articles from the log file**
 
 ```bash
   cat 01-Oct.log | cut -d " " -f 7 | grep article | sort | uniq -c | sort -n | tail -n 5
 ```
 
-### Trier les fichiers
+### Pattern Matching
+
+**Sort files with pattern matching**
 
 ```bash
-  ls -l a* b* c* = ls -l [abc]*
-  ls -l fi??[^l]* = fi[cl][he][^l]*
-```
+  ls -l a* b* c*
+  # Equivalent to:
+  ls -l [abc]*
 
-### Lister les fichiers contenant un chiffre
-
-```bash
-  ls /var/log | grep [O-9]
-  ls /var/log/*[O-9]*
+  # Complex pattern matching
+  ls -l fi??[^l]*
+  # Equivalent to:
+  ls -l fi[cl][he][^l]*
 ```
