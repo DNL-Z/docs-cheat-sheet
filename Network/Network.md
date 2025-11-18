@@ -1,90 +1,145 @@
-# NETWORK 🕸️
+# 🕸️ Network Administration
 
-## VM’s :
+Network configuration, routing, and virtual machine management for Linux systems, including SSH setup, IP configuration, and routing tables.
 
-USER /
-Login : dnl
-Password : J…99%
+## 📑 Table of Contents
 
-ROOT /
-Login : 
-Password : 
+- [📦 Package Management](#-package-management)
+  - [Update & Upgrade Packages](#update--upgrade-packages)
+  - [Install Network Tools](#install-network-tools)
+- [🖥️ Virtual Machine Configuration](#-virtual-machine-configuration)
+  - [VM Information](#vm-information)
+  - [IP Address Information](#ip-address-information)
+- [🔐 SSH Configuration](#-ssh-configuration)
+  - [Setup SSH Access](#setup-ssh-access)
+  - [Connect with SSH Key](#connect-with-ssh-key)
+  - [Switch to Root User](#switch-to-root-user)
+- [🔧 Network Interface Management](#-network-interface-management)
+  - [Configure Network Interfaces](#configure-network-interfaces)
+  - [Enable Network Interfaces](#enable-network-interfaces)
+- [🛣️ Routing Configuration](#-routing-configuration)
+  - [List Existing Routes](#list-existing-routes)
+  - [Add Routes](#add-routes)
+  - [Delete Routes](#delete-routes)
 
-MySQL /
-Login :
-Password : 
+---
 
-## Update & Upgrade Packages
+## 📦 Package Management
+
+### Update & Upgrade Packages
+
+**Update package list and upgrade installed packages**
 
 ```bash
-sudo apt update
-sudo apt upgrade
+  sudo apt update
+  sudo apt upgrade
 ```
 
-## Install Net-Tools
+### Install Network Tools
+
+**Install net-tools package for network configuration utilities**
 
 ```bash
-sudo apt install net-tools
+  sudo apt install net-tools
 ```
 
-## Informations of VM
+---
+
+## 🖥️ Virtual Machine Configuration
+
+### VM Information
+
+**Display network interface configuration**
 
 ```bash
-ifconfig
+  ifconfig
 ```
 
-## Informations sur les adresse IP
+### IP Address Information
+
+**Calculate IP address details and network information**
 
 ```bash
-ipcalc « l’adresse IP »
+  ipcalc <ip_address>
 ```
 
-## Pour la connexion en SSH sur la VM
+---
 
-Il faut créer un fichier « authorized_keys » dans le dossier .ssh sur la VM, où on ajoute la clé-publique « id_rsa.pub » de notre machine.
-=> Passer accès réseau de NAT en Bridge <=
+## 🔐 SSH Configuration
 
-## Première connexion en SSH via ma clé-publique sur la VM avec un user@ip_adress_local
+### Setup SSH Access
+
+**Configure SSH key-based authentication**
+
+To enable SSH access to a VM, create an `authorized_keys` file in the `.ssh` directory on the VM and add your machine's public key `id_rsa.pub`.
+
+> **Note:** Change network access mode from NAT to Bridge for direct network access.
+
+### Connect with SSH Key
+
+**First SSH connection using a public key**
 
 ```bash
-ssh -i id_rsa.pub root@192.168.1.24
+  ssh -i id_rsa.pub user@<ip_address>
 ```
 
-## Une fois connecté avec mon user, pour passer en
+### Switch to Root User
 
-root
+**Switch from regular user to root**
 
 ```bash
-su -
+  su -
 ```
 
-## Modifier le fichier /etc/network/interfaces pour ajouter tous les « network » et ensuite maj avec
+---
+
+## 🔧 Network Interface Management
+
+### Configure Network Interfaces
+
+**Edit the network interfaces configuration file**
+
+Modify `/etc/network/interfaces` to add all network configurations.
+
+### Enable Network Interfaces
+
+**Bring up network interfaces**
 
 ```bash
-ifup enp0s8
-ifup enp0s3
+  ifup enp0s8
+  ifup enp0s3
 ```
 
-## Lister les routes existantes
+---
+
+## 🛣️ Routing Configuration
+
+### List Existing Routes
+
+**Display the routing table**
 
 ```bash
-route -n
+  route -n
 ```
 
-## Ajouter une route de la VM (A) -> VM (C) en passant par VM (B)
+### Add Routes
+
+**Add a route from VM (A) to VM (C) via VM (B)**
 
 ```bash
-route add -net 10.0.4.0/24 gw 10.0.3.5
+  route add -net 10.0.4.0/24 gw 10.0.3.5
 ```
 
-## Ajouter une route de la VM (C) -> VM (A) (pour créer un « aller-retour »)
+**Add a return route from VM (C) to VM (A) (to create a round-trip)**
 
 ```bash
-route add -net 10.0.3.0/24 gw 10.0.4.4
+  route add -net 10.0.3.0/24 gw 10.0.4.4
 ```
 
-## Pour supprimer une route
+### Delete Routes
+
+**Remove a specific route**
 
 ```bash
-route del -net 10.0.4.0/24 gw 10.0.3.5
+  route del -net 10.0.4.0/24 gw 10.0.3.5
 ```
