@@ -1,11 +1,6 @@
 # BEDROCK
 
-Access for **bedrock-discovery**: <br>
-> /wp-admin <br>
-> dnl <br>
-> wTshi1O%Fst$r0%#Q8*l
-
-### Create a New Project
+### Create a new project
 
 ```bash
   composer create-project roots/bedrock name_project
@@ -17,14 +12,21 @@ Access for **bedrock-discovery**: <br>
   composer install
 ```
 
-### Create file package.json
+### Create a package.json file
 
 ```bash
   npm init
 ```
 
-### Install plugin via composer with wpackagist
+### Install plugin via Composer with wpackagist
 
 ```bash
-  composer require (--dev) wpackagist-plugin/plugin_name
+  composer require wpackagist-plugin/plugin_name
 ```
+
+For development dependencies:
+
+```bash
+  composer require --dev wpackagist-plugin/plugin_name
+```
+---
