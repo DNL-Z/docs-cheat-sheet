@@ -1,31 +1,73 @@
-# **JavaScript**
+# 🟨 JavaScript
 
-## Variables
+Langage de programmation interprété, principalement utilisé pour le développement web côté client et serveur.
+
+## 📑 Table des matières
+
+- [📦 Variables et Types](#-variables-et-types)
+  - [Déclaration de variables](#déclaration-de-variables)
+  - [NULL vs UNDEFINED](#null-vs-undefined)
+  - [Types primitifs](#types-primitifs)
+  - [Opérateur void](#opérateur-void)
+- [🛠️ Outils de compilation](#-outils-de-compilation)
+  - [Babel](#babel)
+  - [Parcel](#parcel)
+- [🧮 Fonctions de base](#-fonctions-de-base)
+  - [Opérateurs conditionnels](#opérateurs-conditionnels)
+  - [Méthodes de tableaux](#méthodes-de-tableaux)
+  - [Méthodes de chaînes de caractères](#méthodes-de-chaînes-de-caractères)
+  - [Itérations et transformations](#itérations-et-transformations)
+- [🎯 Syntaxe moderne](#-syntaxe-moderne)
+  - [Déstructuration](#déstructuration)
+  - [Opérateur de décomposition (Spread)](#opérateur-de-décomposition-spread)
+  - [Gabarits de chaînes (Template literals)](#gabarits-de-chaînes-template-literals)
+  - [Expressions régulières (RegExp)](#expressions-régulières-regexp)
+- [⚡ Programmation asynchrone](#-programmation-asynchrone)
+  - [Callback](#callback)
+  - [Promise](#promise)
+  - [Synchrone vs Asynchrone](#synchrone-vs-asynchrone)
+  - [Async / Await](#async--await)
+- [🌐 APIs et stockage](#-apis-et-stockage)
+  - [AJAX](#ajax)
+  - [JSON](#json)
+  - [Local Storage](#local-storage)
+- [📚 Concepts avancés](#-concepts-avancés)
+  - [Iterable & Enumerable](#iterable--enumerable)
+
+---
+
+## 📦 Variables et Types
+
+### Déclaration de variables
 
 - **let** : variable à portée de bloc (**block scoped**) et peut-être réassignée
 - **const** : à portée de bloc (**block scoped**) et sa référence ne peut pas être réassignée
 - **var** : peut avoir une portée locale ou globale, peut être réassignée et est **hissée** (**hoisted**)
 
-## Variable NULL vs UNDEFINED
+### NULL vs UNDEFINED
 
 - **undefined** signifie qu'une variable a été déclarée, mais qu'aucune valeur ne lui a encore été assignée (typeof = undefined)
 - **null** est une valeur d'assignation. Elle peut être assignée à une variable comme représentation d'aucune valeur (typeof = object)
 
-## Primitive
+### Types primitifs
 
 Une **primitive** (valeur primitive ou structure de donnée primitive) est une donnée qui n'est pas un objet et n'a pas de méthode. En **JavaScript**, il y a **7 types de données primitives** : **String**, **Number**, **Boolean**, **Null**, **undefined**, **Symbol**, **Bigint** (nouveauté d'ECMAScript 2020)
 
-## Operator void
+### Opérateur void
 
 L'opérateur **void** évalue l'expression donnée puis retourne **undefined**
 
-## **Babel**
+---
+
+## 🛠️ Outils de compilation
+
+### Babel
 
 C'est un **transcompilateur JavaScript** gratuit et open source qui est principalement utilisé pour convertir le code **ECMAScript 2015+** en une version **rétrocompatible** de **JavaScript** pouvant être exécutée par des moteurs **JavaScript** plus anciens
 
 🔗 [https://babeljs.io/](https://babeljs.io/)
 
-## Parcel
+### Parcel
 
 Le compilateur **JavaScript** de **Parcel** est construit sur **SWC**, qui gère la transpilation de **JavaScript**, **JSX**, et **TypeScript**. Par-dessus SWC, Parcel implémente la collecte de dépendances, le bundling, le **scope hoisting**, le **tree shaking**, l'émulation **Node**, le **hot reloading**, et plus encore
 
@@ -33,14 +75,19 @@ Le compilateur **JavaScript** de **Parcel** est construit sur **SWC**, qui gère
 
 ---
 
-## Fonctions **JavaScript** de base
+## 🧮 Fonctions de base
 
-## Opérateurs conditionnels
+### Opérateurs conditionnels
 
-- **Condition à la volée** avec l'opérateur logique : `true && expression || false && expression`
-- **Opérateur ternaire conditionnel** : `condition ? exprSiVrai : exprSiFaux`
+```js
+// Condition à la volée avec l'opérateur logique
+true && expression || false && expression
 
-## Méthodes de tableaux
+// Opérateur ternaire conditionnel
+condition ? exprSiVrai : exprSiFaux
+```
+
+### Méthodes de tableaux
 
 **concat()** : utilisée afin de fusionner un ou plusieurs tableaux en les concaténant
 
@@ -56,7 +103,7 @@ Le compilateur **JavaScript** de **Parcel** est construit sur **SWC**, qui gère
 
 **splice()** : **modifie le contenu** d'un tableau en retirant des éléments et/ou en ajoutant de nouveaux éléments
 
-## Méthodes de chaînes de caractères
+### Méthodes de chaînes de caractères
 
 **split()** : divise une chaîne de caractères en une liste ordonnée de sous-chaînes, place ces sous-chaînes dans un tableau et retourne le tableau
 
@@ -68,7 +115,7 @@ console.log(words[3]);
 // expected output: "fox"
 ```
 
-## Itérations et transformations de tableaux
+### Itérations et transformations
 
 **forEach()** : permet d'exécuter une fonction donnée sur chaque élément du tableau
 
@@ -86,7 +133,11 @@ console.log(result);
 
 **reduce()** : applique une fonction (accumulateur) qui traite chaque valeur d'une liste (de la gauche vers la droite) afin de la **réduire à une seule valeur**
 
-## Déstructuration
+---
+
+## 🎯 Syntaxe moderne
+
+### Déstructuration
 
 La **déstructuration** permet de déclarer directement des variables et de leur assigner la valeur des propriétés d'un **objet** ou d'un **tableau**.
 
@@ -101,7 +152,7 @@ const note = {
 const { id, title, date } = note;
 ```
 
-## Opérateur de décomposition (Spread)
+### Opérateur de décomposition (Spread)
 
 La syntaxe de **décomposition** « Spread » (`...`) permet d'**étendre** un itérable (tableau, chaîne, etc.)
 - dans les **appels de fonctions** (plusieurs arguments),
@@ -115,10 +166,10 @@ const otherTools = ['wrench', 'saw'];
 
 const allTools = [...tools, ...otherTools];
 console.log(allTools);
-// expected output:["hammer", "screwdriver", "wrench", "saw"]
+// expected output: ["hammer", "screwdriver", "wrench", "saw"]
 ```
 
-## Gabarits de chaînes (Template literals)
+### Gabarits de chaînes (Template literals)
 
 Les **littéraux de gabarits** (`` `...` ``) sont des littéraux de chaînes de caractères permettant d'**intégrer des expressions**. Ils permettent aussi des chaînes **multi‑lignes** et l'**interpolation**.
 
@@ -129,7 +180,7 @@ let rep = 42;
 console.log(`La réponse est ${rep}`);
 ```
 
-## Expressions régulières (RegExp)
+### Expressions régulières (RegExp)
 
 Une **expression régulière** (regex) comme `/^([a-zA-Z ]+)$/` permet, entre autres, de **vérifier** le contenu d'une chaîne de caractères.
 
@@ -142,9 +193,11 @@ if (!pseudo.match(/^([a-zA-Z ]+)$/)) {
 
 ---
 
-## Callback
+## ⚡ Programmation asynchrone
 
-Un **callback** est simplement une **fonction** que vous définissez. Le principe est de la **passer en paramètre** d’une fonction **asynchrone**. Une fois que la fonction asynchrone a fini sa tâche, elle **appelle** notre fonction callback en lui passant un **résultat**. Ainsi, le code que nous mettons dans notre fonction callback sera **exécuté de manière asynchrone**.
+### Callback
+
+Un **callback** est simplement une **fonction** que vous définissez. Le principe est de la **passer en paramètre** d'une fonction **asynchrone**. Une fois que la fonction asynchrone a fini sa tâche, elle **appelle** notre fonction callback en lui passant un **résultat**. Ainsi, le code que nous mettons dans notre fonction callback sera **exécuté de manière asynchrone**.
 
 Exemple :
 ```js
@@ -160,49 +213,55 @@ function processUserInput(callback) {
 processUserInput(salutation);
 ```
 
-## Promise
+### Promise
 
 L'objet **Promise** est utilisé pour réaliser des traitements **asynchrones**. Tout appel à une fonction définie avec le mot clé **async** retourne une **Promise** de la valeur retournée avec **return**.
 
 Une Promise expose notamment :
 - **.then()** pour exécuter du code dès que la **promesse est résolue**,
-- **.catch()** pour exécuter du code dès qu'une **erreur** est survenue.
+- **.catch()** pour exécuter du code dès qu'une **erreur** est survenue
 
----
-
-## Synchrone vs Asynchrone
+### Synchrone vs Asynchrone
 
 - **Synchrone** : le code s'exécute **ligne après ligne**, en attendant la fin de l'exécution de la ligne précédente.
 - **Asynchrone** : le code s'exécute ligne après ligne, mais une **ligne suivante** peut **attendre** qu'une opération asynchrone (par exemple avec **await**) ait fini son exécution.
 
-## Async / Await
+### Async / Await
 
 Avec **async** et **await** :
 - une fonction asynchrone doit avoir le mot clé **async** avant la fonction ;
 - dans le code, on peut **attendre** le résultat d'autres fonctions asynchrones grâce au mot clé **await** placé devant l'appel de la fonction.
 
-## Article recommandé
+#### 📖 Article recommandé
 
 Asynchronous **JavaScript**: The Event Loop, Callbacks, Promises, and Async / Await
+
 🔗 https://blog.bitsrc.io/journey-from-callbacks-to-promises-to-async-await-6fcd7f7fa3c5
 
 ---
 
-## AJAX
+## 🌐 APIs et stockage
+
+### AJAX
 
 Si plusieurs fichiers **JavaScript** ont besoin d'effectuer des **requêtes HTTP**, alors le fichier `ajax.js` doit toujours être inclus dans la page web **avant** les autres fichiers **JavaScript** qui utilisent les fonctions qu'il contient.
 
-## JSON
+### JSON
 
 **JavaScript** permet de gérer facilement ce format de données :
 - **JSON.parse()** : transforme une **chaîne** conforme au format JSON en un **objet JavaScript** ;
 - **JSON.stringify()** : transforme un **objet JavaScript** en **chaîne** conforme au format JSON.
 
-## Iterable & Enumerable
-
-The main difference between **iterable** and **enumerable** is that the former applies to **values** and the latter to **properties**.
-🔗 https://dilshankelsen.com/difference-between-iterable-enumarable-in-javascript/
-
-## Local Storage
+### Local Storage
 
 Le **localStorage** ne connait qu'un seul type de valeur : les **chaînes de caractères**.
+
+---
+
+## 📚 Concepts avancés
+
+### Iterable & Enumerable
+
+La principale différence entre **iterable** et **enumerable** est que le premier s'applique aux **valeurs** et le second aux **propriétés**.
+
+🔗 https://dilshankelsen.com/difference-between-iterable-enumarable-in-javascript/
