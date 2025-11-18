@@ -73,6 +73,11 @@ Le compilateur **JavaScript** de **Parcel** est construit sur **SWC**, qui gère
 
 🔗 [https://parceljs.org/](https://parceljs.org/)
 
+### Webpack
+**Webpack** est un **module bundler** pour les applications JavaScript modernes. Il analyse votre application, construit un graphe de dépendances et génère un ou plusieurs bundles
+
+🔗 [https://webpack.js.org/](https://webpack.js.org/)
+
 ---
 
 ## 🧮 Fonctions de base
@@ -240,7 +245,7 @@ Asynchronous **JavaScript**: The Event Loop, Callbacks, Promises, and Async / Aw
 
 ---
 
-## 🌐 APIs et stockage
+## 🌐 API's et stockage
 
 ### AJAX
 
