@@ -1,6 +1,6 @@
 # ⚙️ Node.js
 
-Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.
+**Node.js** is a JavaScript runtime built on Chrome's V8 JavaScript engine.
 
 ---
 
@@ -107,7 +107,7 @@ Web framework for Node.js
 
 ### Mongoose
 
-MongoDB object modeling tool
+MongoDB - Object Modeling Tool
 
 ```bash
   npm install mongoose
@@ -181,11 +181,11 @@ const port = process.env.PORT || 3000;
 
 ---
 
-## 🌐 REST API Fundamentals
+## 🌐 REST API - Fundamentals
 
 ### What is a REST API?
 
-REST (Representational State Transfer) is an architectural style for designing networked applications. A REST API uses HTTP requests to access and manipulate resources.
+**REST** (Representational State Transfer) is an architectural style for designing networked applications. A REST API uses HTTP requests to access and manipulate resources.
 
 **Key principles:**
 - Stateless communication
@@ -216,11 +216,11 @@ app.get('/api/users', (req, res) => {
 });
 ```
 
-Used for: Fetching resources
-Idempotent: ✅ Yes
+Used for: Fetching resources <br>
+Idempotent: ✅ Yes <br>
 Has body: ❌ No
 
-### POST - Create new resource
+### POST - Create a new resource
 
 ```javascript
 app.post('/api/users', (req, res) => {
@@ -229,11 +229,11 @@ app.post('/api/users', (req, res) => {
 });
 ```
 
-Used for: Creating resources
-Idempotent: ❌ No
+Used for: Creating resources<br>
+Idempotent: ❌ No <br>
 Has body: ✅ Yes
 
-### PUT - Update entire resource
+### PUT - Update the entire resource
 
 ```javascript
 app.put('/api/users/:id', (req, res) => {
@@ -242,8 +242,8 @@ app.put('/api/users/:id', (req, res) => {
 });
 ```
 
-Used for: Replacing resources
-Idempotent: ✅ Yes
+Used for: Replacing resources <br>
+Idempotent: ✅ Yes <br>
 Has body: ✅ Yes
 
 ### PATCH - Partial update
@@ -255,8 +255,8 @@ app.patch('/api/users/:id', (req, res) => {
 });
 ```
 
-Used for: Modifying specific fields
-Idempotent: ✅ Yes
+Used for: Modifying specific fields <br>
+Idempotent: ✅ Yes <br>
 Has body: ✅ Yes
 
 ### DELETE - Remove resource
@@ -267,8 +267,8 @@ app.delete('/api/users/:id', (req, res) => {
 });
 ```
 
-Used for: Deleting resources
-Idempotent: ✅ Yes
+Used for: Deleting resources <br>
+Idempotent: ✅ Yes <br>
 Has body: ❌ No
 
 ---
