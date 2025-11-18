@@ -5,12 +5,12 @@ Go is an open-source programming language that makes it easy to build simple, re
 Go is fast, statically typed, compiled, and has built-in concurrency support.
 
 ## 📑 Table of Contents
-- [✅ Version Check](#version-check)
-- [⚙️ Environment Setup](#environment-setup)
-- [🧪 Testing and Running](#testing-and-running)
-- [🎨 Code Formatting](#code-formatting)
-- [🐍 Cobra CLI Framework](#cobra-cli-framework)
-- [🗄️ Redis Integration](#redis-integration)
+- [✅ Version Check](#-version-check)
+- [⚙️ Environment Setup](#-environment-setup)
+- [🧪 Testing and Running](#-testing-and-running)
+- [🎨 Code Formatting](#-code-formatting)
+- [🐍 Cobra CLI Framework](#-cobra-cli-framework)
+- [🗄️ Redis Integration](#-redis-integration)
 
 ---
 
