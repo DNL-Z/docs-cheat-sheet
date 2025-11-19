@@ -1,6 +1,6 @@
 # 🗄️ SQL
 
-**Structured Query Language**.
+**Structured Query Language** (SQL) is a standardized programming language used for managing and manipulating relational databases. It allows you to create, read, update, and delete data (CRUD operations), as well as define database structures, control access, and perform complex queries. SQL is the foundation of most modern database systems like MySQL, PostgreSQL, Oracle, and SQL Server.
 
 ## 📑 Table of Contents
 
