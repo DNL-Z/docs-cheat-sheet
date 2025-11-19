@@ -1,185 +1,246 @@
-# **Python**
+# 🐍 Python
 
-PEP8
- is the standard syntax in **Python**.
-It is recommended to follow the
-snake_case
- naming convention.
+A comprehensive reference guide for Python development, covering package management, virtual environments, popular frameworks, and libraries.
 
-## Lancer python (système)
+## 📑 Table of Contents
 
-```bash
-python
-python -V
-```
-
-## Lancer python3 (homebrew)
-
-```bash
-python3
-python3 -V
-```
-
-## Exporter la liste des paquets
-
-```bash
-pip freeze > requirements.txt
-```
-
-## Installer les librairies
-
-$
-python3 -m pip install -r requirements.txt
+- [📋 Code Standards](#-code-standards)
+- [🚀 Running Python](#-running-python)
+  - [System Python](#system-python)
+  - [Homebrew Python3](#homebrew-python3)
+- [📦 Package Management](#-package-management)
+  - [Export Package List](#export-package-list)
+  - [Install Libraries](#install-libraries)
+- [🔧 Virtual Environments](#-virtual-environments)
+  - [Python3 Virtual Environment](#python3-virtual-environment)
+  - [MiniConda (Anaconda) Virtual Environment](#miniconda-anaconda-virtual-environment)
+- [📓 Jupyter Notebook](#-jupyter-notebook)
+- [🕷️ Web Scraping with Scrapy](#-web-scraping-with-scrapy)
+- [📊 Data Analysis with Pandas](#-data-analysis-with-pandas)
+- [🌐 Django Framework](#-django-framework)
+  - [Installation](#installation)
+  - [Project Setup](#project-setup)
+  - [Database Migrations](#database-migrations)
+  - [User Management](#user-management)
+  - [Django Shell](#django-shell)
 
 ---
 
-## Environnement virtuel avec Python3
+## 📋 Code Standards
 
-## Créer un environnement
+**PEP8** is the standard syntax in Python. It is recommended to follow the **snake_case** naming convention.
+
+---
+
+## 🚀 Running Python
+
+### System Python
 
 ```bash
-python3 -m venv <name-pyenv>
+  python
+  python -V
 ```
 
-## Activer l'environnement
+### Homebrew Python3
 
 ```bash
-source <name-environement>/bin/activate
-source ~/Dev/Python/environments/discovery-env/bin/activate
-```
-
-## Désactiver l'environnement
-
-```bash
-deactivate
-```
-
-## Environnement virtuel avec MiniConda (Anaconda)
-
-## Créer un environnement
-
-$
-conda create --name <env_name> python=3.9
-
-## Activer l'environnement
-
-```bash
-conda activate <env_name>
-```
-
-## Désactiver l'environnement
-
-```bash
-conda deactivate
-```
-
-## Lister les environnements
-
-```bash
-conda info --envs
+  python3
+  python3 -V
 ```
 
 ---
 
-## Installer Jupyter Notebook
+## 📦 Package Management
+
+### Export Package List
+
+Export all installed packages to a requirement file:
 
 ```bash
-pip install notebook
+  pip freeze > requirements.txt
 ```
 
-## Lancer Jupyter Notebook
+### Install Libraries
+
+Install libraries from a requirement file:
 
 ```bash
-jupyter notebook
-```
-
-## Installer Scrapy
-
-```bash
-pip install scrapy
-```
-
-## Utiliser Scrapy dans le web
-
-```bash
-scrapy runspider <name-file.py>
-scrapy runspider ocr-scrapy.py -o characters.json
-```
-
-## Installer Pandas
-
-```bash
-pip install pandas
+  python3 -m pip install -r requirements.txt
 ```
 
 ---
 
-## Django
+## 🔧 Virtual Environments
 
-## Installer Django
+### Python3 Virtual Environment
 
-```bash
-pip install django
-```
-
-## Librairie pour la gestion d'image
+**Create an environment:**
 
 ```bash
-pip install Pillow
+  python3 -m venv <name-pyenv>
 ```
 
-## Création du projet
+**Activate the environment:**
 
 ```bash
-django-admin startproject insta
+  source <name-environment>/bin/activate
 ```
 
-## Création app dans le projet
+**Deactivate the environment:**
 
 ```bash
-django-admin startapp photos
+  deactivate
 ```
 
-## Lancer le serveur
+### MiniConda (Anaconda) Virtual Environment
+
+**Create an environment:**
 
 ```bash
-python manage.py runserver
+  conda create --name <env_name> python=3.9
 ```
 
-## Creer une migration
+**Activate the environment:**
 
 ```bash
-python manage.py makemigration
+  conda activate <env_name>
 ```
 
-## Executer la migration
+**Deactivate the environment:**
 
 ```bash
-python manage.py migrate
+  conda deactivate
 ```
 
-## Créer un nouveau user
+**List environments:**
 
 ```bash
-python manage.py createsuperuser
+  conda info --envs
 ```
 
-Changer dans setting.py 
-'DIRS': [], par 'DIRS': ["f\BASE_DIR\/templates"] 
-pour gérer les templates.
+---
+
+## 📓 Jupyter Notebook
+
+**Install Jupyter Notebook:**
 
 ```bash
-python manage.py shell
+  pip install notebook
 ```
 
-## Exemple dans le shell python
+**Launch Jupyter Notebook:**
 
+```bash
+  jupyter notebook
+```
+
+---
+
+## 🕷️ Web Scraping with Scrapy
+
+**Install Scrapy:**
+
+```bash
+  pip install scrapy
+```
+
+**Run a Scrapy spider:**
+
+```bash
+  scrapy runspider <name-file.py>
+  scrapy runspider ocr-scrapy.py -o characters.json
+```
+
+---
+
+## 📊 Data Analysis with Pandas
+
+**Install Pandas:**
+
+```bash
+  pip install pandas
+```
+
+---
+
+## 🌐 Django Framework
+
+### Installation
+
+**Install Django:**
+
+```bash
+  pip install django
+```
+
+**Install Pillow (image management library):**
+
+```bash
+  pip install Pillow
+```
+
+### Project Setup
+
+**Create a project:**
+
+```bash
+  django-admin startproject <project_name>
+```
+
+**Create an app within the project:**
+
+```bash
+  django-admin startapp <app_name>
+```
+
+**Run the development server:**
+
+```bash
+  python manage.py runserver
+```
+
+**Template configuration:**
+
+In `settings.py`, change `'DIRS': []` to `'DIRS': [BASE_DIR / "templates"]` to manage templates.
+
+### Database Migrations
+
+**Create a migration:**
+
+```bash
+  python manage.py makemigrations
+```
+
+**Execute migrations:**
+
+```bash
+  python manage.py migrate
+```
+
+### User Management
+
+**Create a new superuser:**
+
+```bash
+  python manage.py createsuperuser
+```
+
+### Django Shell
+
+**Launch the Django shell:**
+
+```bash
+  python manage.py shell
+```
+
+**Example commands in the Django shell:**
+
+```python
 from photos.models import Photo
 
-## Affiche tout les données
-
+# Display all data
 Photo.objects.all()
 
-## Trie les donnée dont le status es Published
-
+# Filter data where status is Published
 Photo.objects.filter(status=Photo.PUBLISHED)
+```
