@@ -1,318 +1,452 @@
-# RASPBERRY Pi 3B+ - OS RASPBIAN
+# 🍓 Raspberry Pi
 
-IP-Freebox :
+A comprehensive reference guide for Raspberry Pi administration, covering system management, web servers, SSL certificates, and user management.
 
-82.66.182.201
+## 📑 Table of Contents
 
-IP-Local-**Raspberry**-Pi :
- 192.168.1.116
+- [⚙️ Hardware Specifications](#-hardware-specifications)
+- [📱 Essential Applications](#-essential-applications)
+- [🔄 System Management](#-system-management)
+  - [Check OS Version](#check-os-version)
+  - [Update System](#update-system)
+  - [Configuration Tool](#configuration-tool)
+  - [Restart System](#restart-system)
+  - [Start GUI](#start-gui)
+- [🌐 Network Configuration](#-network-configuration)
+  - [IP Configuration](#ip-configuration)
+  - [SSH Connection](#ssh-connection)
+  - [Port Scanning](#port-scanning)
+- [👥 User Management](#-user-management)
+  - [Create New User](#create-new-user)
+  - [Grant Sudo Privileges](#grant-sudo-privileges)
+  - [Transfer Files](#transfer-files)
+  - [Change Ownership](#change-ownership)
+  - [Update Autologin](#update-autologin)
+  - [Delete User](#delete-user)
+  - [Show User Permissions](#show-user-permissions)
+- [🌍 Web Servers](#-web-servers)
+  - [Nginx](#nginx)
+  - [Apache](#apache)
+- [🔒 SSL/TLS Certificates](#-ssltls-certificates)
+  - [SSL Terminology](#ssl-terminology)
+  - [Certificate Management](#certificate-management)
+  - [Firewall Configuration](#firewall-configuration)
+- [🗄️ Database Management](#-database-management)
+  - [MySQL](#mysql)
+- [📁 File System](#-file-system)
+  - [Directory Navigation](#directory-navigation)
+  - [SD Card Troubleshooting](#sd-card-troubleshooting)
 
-## Characteristics
+---
 
-	- Processor ARM Cortex-A53 64 bit quad-core 1,4 GHz
-	- RAM 1 GB
-	- Wi-Fi 5GHz
-	- Bluetooth 4.2/BLE
-	- 4 USB ports
-	- Ethernet
-	- HDMI
-	- Micro-SD 32GB
-	- GPIO connector with 40 I/O pins
+## ⚙️ Hardware Specifications
 
-## Applications
+**Raspberry Pi 3B+ Specifications:**
 
-	=> **Raspberry** Pi Imager
-	=> VNC Viewer
+- **Processor:** ARM Cortex-A53 64-bit quad-core 1.4 GHz
+- **RAM:** 1 GB
+- **Wireless:** Wi-Fi 5GHz, Bluetooth 4.2/BLE
+- **Ports:** 4× USB, Ethernet, HDMI
+- **Storage:** Micro-SD 32GB
+- **GPIO:** 40 I/O pins connector
 
-## Know version OS
+---
+
+## 📱 Essential Applications
+
+- **Raspberry Pi Imager** - OS installation tool
+- **VNC Viewer** - Remote desktop access
+
+---
+
+## 🔄 System Management
+
+### Check OS Version
 
 ```bash
-cat /etc/os-release
+  cat /etc/os-release
 ```
 
-## Update package lists
+### Update System
+
+**Update package lists:**
 
 ```bash
-sudo apt update
+  sudo apt update
 ```
 
-## Download and install updated packages
+**Download and install updated packages:**
 
 ```bash
-sudo apt upgrade
+  sudo apt upgrade
 ```
 
-## Clean old package
+**Clean old packages:**
 
 ```bash
-sudo apt clean
+  sudo apt clean
 ```
 
-## Connection en local
+### Configuration Tool
+
+Access the Raspberry Pi configuration tool:
 
 ```bash
-ssh dnl@192.168.1.116
+  sudo raspi-config
 ```
 
-## Connection SSH external
+### Restart System
 
 ```bash
-ssh dnl@zhalkovskyy.tech -p 16422
+  sudo reboot
 ```
 
-## Restart SSH
+### Start GUI
+
+Start the graphical user interface (desktop environment):
 
 ```bash
-sudo systemctl restart ssh
-```
-
-## Know Nginx version
-
-```bash
-nginx -v
-```
-
-## Know Apache version
-
-```bash
-/usr/sbin/apache2 -v
-```
-
-## Know **PHP** version
-
-```bash
-php --version
-```
-
-## Know MySQL version
-
-```bash
-mysql -V
-```
-
-## Connection MySQL
-
-```bash
-sudo mysql -u root -p password
-```
-
-## The **Raspberry** Pi configuration tool
-
-```bash
-sudo raspi-config
-```
-
-## Start Graphical User Interface (home desk)
-
-```bash
-sudo systemctl start lightdm
-```
-
-## Show a tree of directories
-
-```bash
-tree -d
-```
-
-## Restart **Raspberry** Pi
-
-```bash
-sudo reboot
-```
-
-## Show permission for user
-
-```bash
-groups username
-```
-
-## Address IP configuration
-
-```bash
-ifconfig
-```
-
-## Show accessible port
-
-```bash
-nmap « IP »
-```
-
-## Status of Nginx server
-
-```bash
-sudo systemctl status nginx
-```
-
-## Restart Nginx server
-
-```bash
-sudo systemctl restart nginx
-```
-
-## Status of Apache server
-
-```bash
-sudo systemctl status apache2
-```
-
-## Restart Apache server
-
-```bash
-sudo /etc/init.d/apache2 restart
-```
-
-OR
-
-```bash
-sudo systemctl restart apache2
-```
-
-## Start & stop Apache server
-
-```bash
-sudo /etc/init.d/apache2 start
-```
-
-$
-sudo /etc/init.d/apache2 stop
-
-## Do not start Apache at startup
-
-```bash
-sudo systemctl disable apache2
-```
-
-## Running Apache automatically at startup
-
-```bash
-sudo systemctl enable apache2
+  sudo systemctl start lightdm
 ```
 
 ---
 
-## Setup Nginx server
+## 🌐 Network Configuration
+
+### IP Configuration
+
+View network configuration:
 
 ```bash
-sudo nano /etc/ssh/sshd_config
-sudo nano /etc/nginx/sites-available/zhalkovskyy.tech
+  ifconfig
 ```
 
+### SSH Connection
+
+**Local connection:**
+
 ```bash
-sudo ln -s /etc/nginx/sites-available/zhalkovskyy.tech /etc/nginx/sites-enabled/
+  ssh username@192.168.1.xxx
 ```
 
-## DNS, CSR, SSL, TLS, DMZ
-
-	=> Domain Name System
-	=> Certificate Signing Request
-	=> Secure Sockets Layer
-	=> Transport Layer Security
-	=> DeMilitarized Zone
-
-## Activate SSL module
+**External connection:**
 
 ```bash
-sudo a2enmod ssl
+  ssh username@domain.com -p port_number
 ```
 
-## Create CSR for SSL
+**Restart SSH service:**
 
 ```bash
-openssl req -nodes -newkey rsa:2048 -sha256 -keyout myserver.key -out server.csr -utf8
+  sudo systemctl restart ssh
 ```
 
-## Create certificate with Let’s encrypt & Certbot (Nginx & Apache)
+### Port Scanning
+
+Show accessible ports:
 
 ```bash
-sudo apt install python-certbot-nginx
-sudo certbot --nginx
-sudo certbot --nginx -d zhalkovskyy.tech -d www.zhalkovskyy.tech
-```
-
-OR
-
-```bash
-sudo apt install python-certbot-apache
-```
-
-```bash
-sudo certbot --apache
-sudo certbot --apache -d zhalkovskyy.tech -d www.zhalkovskyy.tech
-```
-
-## Change the rules for Firewall with UFW
-
-```bash
-sudo ufw status
-sudo ufw allow 22/tcp
-sudo ufw allow 80/tcp
-sudo ufw allow 443/tcp
-```
-
-## Path of certificates SSL
-
-```bash
-cat Server-CSR-SSL/server.csr
-cat /etc/ssl/certs/ssl-cert-snakeoil.pem
-```
-
-```bash
-cat Server-CSR-SSL/myserver.key
-cat /etc/ssl/private/ssl-cert-snakeoil.key
+  nmap <IP_ADDRESS>
 ```
 
 ---
 
-## Crate a new user
+## 👥 User Management
+
+### Create New User
 
 ```bash
-sudo adduser new_username
+  sudo adduser new_username
 ```
 
-## Grant sudo privileges
+### Grant Sudo Privileges
 
 ```bash
-sudo usermod -aG sudo new_username
+  sudo usermod -aG sudo new_username
 ```
 
-## Transfer home directory files
+### Transfer Files
+
+Transfer home directory files to a new user:
 
 ```bash
-sudo cp -r /home/pi/* /home/new_username/
+  sudo cp -r /home/old_user/* /home/new_username/
 ```
 
-## Change ownership
+### Change Ownership
 
 ```bash
-sudo chown -R new_username:new_username /home/new_username/
+  sudo chown -R new_username:new_username /home/new_username/
 ```
 
-## Update autologin configuration
+### Update Autologin
 
 ```bash
-sudo nano /etc/lightdm/lightdm.conf
+  sudo nano /etc/lightdm/lightdm.conf
 ```
 
-=> autologin-user=new_username
+Update the configuration:
 
-## Delete the old pi user
+```
+autologin-user=new_username
+```
+
+### Delete User
+
+Delete user and remove the home directory:
 
 ```bash
-sudo deluser --remove-home pi
+  sudo deluser --remove-home username
+```
+
+### Show User Permissions
+
+```bash
+  groups username
 ```
 
 ---
 
-## Micro-SD at the end of the life
+## 🌍 Web Servers
+
+### Nginx
+
+**Check version:**
 
 ```bash
-mount => see if it ReadOnly or ReadWrite
-sudo umount /
-sudo fsck -y /
-sudo mount /
+  nginx -v
 ```
 
-(it’s better to change Micro-SD card)
+**Check service status:**
+
+```bash
+  sudo systemctl status nginx
+```
+
+**Restart service:**
+
+```bash
+  sudo systemctl restart nginx
+```
+
+**Setup Nginx server:**
+
+Edit SSH configuration:
+
+```bash
+  sudo nano /etc/ssh/sshd_config
+```
+
+Edit site configuration:
+
+```bash
+  sudo nano /etc/nginx/sites-available/your-site
+```
+
+Create a symbolic link to enable the site:
+
+```bash
+  sudo ln -s /etc/nginx/sites-available/your-site /etc/nginx/sites-enabled/
+```
+
+### Apache
+
+**Check version:**
+
+```bash
+  /usr/sbin/apache2 -v
+```
+
+**Check service status:**
+
+```bash
+  sudo systemctl status apache2
+```
+
+**Restart service:**
+
+Option 1:
+
+```bash
+  sudo /etc/init.d/apache2 restart
+```
+
+Option 2:
+
+```bash
+  sudo systemctl restart apache2
+```
+
+**Start service:**
+
+```bash
+  sudo /etc/init.d/apache2 start
+```
+
+**Stop service:**
+
+```bash
+  sudo /etc/init.d/apache2 stop
+```
+
+**Disable automatic startup:**
+
+```bash
+  sudo systemctl disable apache2
+```
+
+**Enable automatic startup:**
+
+```bash
+  sudo systemctl enable apache2
+```
 
 ---
+
+## 🔒 SSL/TLS Certificates
+
+### SSL Terminology
+
+- **DNS** - Domain Name System
+- **CSR** - Certificate Signing Request
+- **SSL** - Secure Sockets Layer
+- **TLS** - Transport Layer Security
+- **DMZ** - DeMilitarized Zone
+
+### Certificate Management
+
+**Activate SSL module (Apache):**
+
+```bash
+  sudo a2enmod ssl
+```
+
+**Create CSR for SSL:**
+
+```bash
+  openssl req -nodes -newkey rsa:2048 -sha256 -keyout myserver.key -out server.csr -utf8
+```
+
+**Create a certificate with Let's Encrypt & Certbot:**
+
+For Nginx:
+
+```bash
+  sudo apt install python-certbot-nginx
+  sudo certbot --nginx
+  sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+```
+
+For Apache:
+
+```bash
+  sudo apt install python-certbot-apache
+  sudo certbot --apache
+  sudo certbot --apache -d your-domain.com -d www.your-domain.com
+```
+
+**Certificate paths:**
+
+View CSR:
+
+```bash
+  cat Server-CSR-SSL/server.csr
+  cat /etc/ssl/certs/ssl-cert-snakeoil.pem
+```
+
+View private key:
+
+```bash
+  cat Server-CSR-SSL/myserver.key
+  cat /etc/ssl/private/ssl-cert-snakeoil.key
+```
+
+### Firewall Configuration
+
+**Manage UFW (Uncomplicated Firewall):**
+
+Check status:
+
+```bash
+  sudo ufw status
+```
+
+Allow ports:
+
+```bash
+  sudo ufw allow 22/tcp    # SSH
+  sudo ufw allow 80/tcp    # HTTP
+  sudo ufw allow 443/tcp   # HTTPS
+```
+
+---
+
+## 🗄️ Database Management
+
+### MySQL
+
+**Check version:**
+
+```bash
+  mysql -V
+```
+
+**Connect to MySQL:**
+
+```bash
+  sudo mysql -u root -p
+```
+
+---
+
+## 📁 File System
+
+### Directory Navigation
+
+**Show the directory tree:**
+
+```bash
+  tree -d
+```
+
+### SD Card Troubleshooting
+
+**When a Micro-SD card is at the end of its life:**
+
+Check if mounted as ReadOnly or ReadWrite:
+
+```bash
+  mount
+```
+
+Unmount and check the file system:
+
+```bash
+  sudo umount /
+  sudo fsck -y /
+  sudo mount /
+```
+
+> **Note:** If the SD card shows signs of failure, it's recommended to replace it with a new one.
+
+---
+
+## 🔍 Additional Commands
+
+### Software Versions
+
+**Check PHP version:**
+
+```bash
+  php --version
+```
+
+---
+
+## 💡 Tips
+
+- Always keep your system updated with `sudo apt update && sudo apt upgrade`
+- Regularly backup your SD card to prevent data loss
+- Use strong passwords for all user accounts
+- Enable firewall rules to secure your Raspberry Pi
+- Monitor disk space and clean old packages regularly
