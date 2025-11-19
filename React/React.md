@@ -1,144 +1,267 @@
-# React ⚛︎
+# ⚛️ React
 
-### Create a new project with Create React App
-https://create-react-app.dev/docs/getting-started
+A comprehensive reference guide for React development, covering project setup, core concepts, hooks, routing, state management, and essential tools.
+
+## 📑 Table of Contents
+
+- [🚀 Getting Started](#-getting-started)
+  - [Create a New Project](#create-a-new-project)
+  - [File Extensions](#file-extensions)
+- [🔧 Core Concepts](#-core-concepts)
+  - [CDN](#cdn)
+  - [DOM](#dom)
+  - [Webpack](#webpack)
+- [🎣 Hooks](#-hooks)
+  - [useState](#usestate)
+  - [useEffect](#useeffect)
+  - [useContext](#usecontext)
+  - [useCallback](#usecallback)
+  - [useMemo](#usememo)
+  - [useRef](#useref)
+- [⚡ Performance](#-performance)
+  - [memo()](#memo)
+- [🛣️ React Router](#-react-router)
+  - [Installation](#installation)
+  - [Router Hooks](#router-hooks)
+- [📚 State Management & HTTP](#-state-management--http)
+  - [Redux](#redux)
+  - [Axios](#axios)
+- [🎨 Styling](#-styling)
+  - [Styled Components](#styled-components)
+  - [Emotion](#emotion)
+- [🛠️ Development Tools](#-development-tools)
+  - [ESLint](#eslint)
+  - [Prettier](#prettier)
+  - [PropTypes](#proptypes)
+  - [Simple Import Sort](#simple-import-sort)
+- [📝 Forms](#-forms)
+- [⌨️ Keyboard Shortcuts](#-keyboard-shortcuts)
+
+---
+
+## 🚀 Getting Started
+
+### Create a New Project
+
+Using Create React App:
+
+**Documentation:** https://create-react-app.dev/docs/getting-started
 
 ```bash
-  $ npx create-react-app « app_name »
+  npx create-react-app <app_name>
 ```
+
+### File Extensions
+
+- **`.jsx`** - JavaScript extension created by React, allows using JSX syntax directly in JavaScript code
+- **`.ts`** - For pure TypeScript files
+- **`.tsx`** - For files containing JSX (JavaScript XML)
+
+**Example:** A React component would use `.tsx`, while a file containing helper functions would use `.ts`.
+
+---
+
+## 🔧 Core Concepts
 
 ### CDN
-Content Delivery Network, permet notamment d'importer une bibliothèque directement dans le code HTML
+
+**Content Delivery Network** allows importing libraries directly into HTML code.
 
 ### DOM
-Document Object Model, document comme un ensemble de nœuds et d'objets possédant des propriétés et des méthodes
 
-	•	React – c'est l'API qui permettra de gérer les composants
-	•	React DOM – c’est l'API qui est responsable de générer les composants dans le DOM
-	•	Babel – cet outil permet d'utiliser les dernières syntaxes de JS dans le navigateur (ES6+)
+**Document Object Model** - represents the document as a set of nodes and objects with properties and methods.
+
+**Key libraries:**
+- **React** - API for managing components
+- **React DOM** - API responsible for rendering components in the DOM
+- **Babel** - Tool that enables using the latest JavaScript syntax (ES6+) in the browser
 
 ### Webpack
-C’est un bundler, il nous permet d’importer notre composant aussi facilement, avec import. Cet outil particulièrement utile est essentiel pour lier les fichiers entre eux, afin qu’ils soient interprétés par le navigateur
 
-### Files extensions
-.jsx => this is the JavaScript extension created by React, which allows us to use our syntax as tags directly in the JavaScript code
-.ts  => for pure TypeScript files
-.tsx => for files which contain JSX « JavaScript XML »
+A **bundler** that allows importing components easily with `import`. This essential tool links files together so they can be interpreted by the browser.
 
-For example, a React component would be .tsx, but a file containing helper functions would be .ts
+---
 
-—————————————————————————
+## 🎣 Hooks
 
-# Functions
+Hooks are functions that allow you to "hook into" React features.
 
-memo() vous permet d’éviter de recalculer le rendu d’un composant du moment que ses props n’ont pas changé
+### useState
 
-—————————————————————————
+A hook that adds React local state to functional components.
 
-# Hooks
-Un hook est une fonction qui permet de « se brancher, to hook up » sur des fonctionnalités React
+**Note:** Local state exists inside a component.
 
-useState() est un hook qui permet d’ajouter le State Local React à des composants fonctions
-=> state local est présent à l’intérieur d’un composant
+**Example decomposed:**
 
-Example of useState() decomposed :
-```
+```javascript
 const cartState = useState(0)
 const cart = cartState[0]
 const updateCart = cartState[1]
 ```
 
-useEffect() est un hook qui permet d’exécuter des actions après le rendre de nos composants en choisissant à quel moment et à quelle fréquence cette action doit être exécutée (une fonction qui permet de « se brancher » sur la fonctionnalité des effets de React)
-Appelez toujours useEffect() à la racine de votre composant
+### useEffect
 
-	•	Un tableau de dépendances vide [ ] permet d'exécuter un effet uniquement au premier rendu de votre composant
-	•	Un tableau de dépendances [total] précis, permet de préciser quelle modification de donnée déclenche les effets exécutés
-	•	Sans préciser le tableau de dépendance, le useEffect() est appelé à chaque rendu du composant
+A hook that executes actions after rendering components, allowing you to choose when and how often the action should be executed.
 
-useContext() est un hook qui permet de « se brancher » depuis un composant enfant qui a été wrappé par un Provider, et donc d’accéder simplement au state partagé. Le Contexte est conçu pour partager des données qui peuvent être considérées comme globales
+**Important:** Always call `useEffect()` at the root of your component.
 
-useCallback() est un hook qui vous permet de mettre en cache une définition de fonction d’un rendu à l’autre (qui peut changer en fonction de leurs dépendances)
+**Dependency array behavior:**
+- **Empty array `[]`** - Executes the effect only on first render
+- **Specific array `[total]`** - Executes when specified data changes
+- **No array** - Executes on every component render
 
-useMemo() est un hook qui renvoie une valeur calculée (une sorte de cache, qui peut changer en fonction de leurs dépendances)
+### useContext
 
-useRef() est un Hook React qui vous permet de référencer une valeur qui n’est pas nécessaire au code du rendu lui-même
+A hook that allows a child component wrapped by a Provider to access the shared state. Context is designed to share data that can be considered global.
 
-—————————————————————————
+### useCallback
 
-# React Router
-C’est une des bibliothèques qui permettent de transformer une App React en SPA (Single Page Application)
+A hook that lets you cache a function definition between renders (can change based on dependencies).
 
-```bash
-$ npm install react-router-dom
-```
+### useMemo
 
-<Switch /> nous permet d'afficher uniquement la première route dont le chemin correspond, et on ajoute une route à laquelle on ne passe pas de prop path à notre composant <Error />, où le visiteur sera rédiriger en cas de fausse route
+A hook that returns a memoized calculated value (a sort of cache, can change based on dependencies).
 
-<Route exact path=« / »>, exact permet de préciser la route par défaut
+### useRef
 
-useRouter() est un hook de Next.JS, it allows to use if you want to access to the « router » object inside any function of component in tour app
+A React Hook that lets you reference a value that isn't needed for rendering itself.
 
-useParams() it’s a hook returns an object of key / value pairs of the dynamic params from the current URL that were matched by the <Route path>. Child routes inherit all params from their parent routes
+---
 
-—————————————————————————
+## ⚡ Performance
 
-# Redux
-Bibliothèque de gestion d'état pour applications web
-https://redux.js.org/
+### memo()
 
-# Axios
-Axios is a promise-based HTTP Client for Node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests
+Allows you to skip re-rendering a component when its props haven't changed.
 
-# ESLint
-L’outil permettant de signaler les erreurs de code
-file name → eslint.config.js or eslint.config.mjs
+---
 
-# Install ESLint
-```bash
-$ npm install --save-dev eslint
+## 🛣️ React Router
 
-$ npx eslint --fix .
-```
+One of the libraries that transform a React App into an SPA (Single Page Application).
 
-# Prettier
-L’outil de formatage de code de référence
-file name => .prettierrc.json or else
+### Installation
 
 ```bash
-  $ npm install --save-dev --save-exact prettier
+  npm install react-router-dom
 ```
 
-# Format all files with Prettier
+**Key components:**
+
+- **`<Switch />`** - Displays only the first route whose path matches, with a default route without a `path` prop redirecting to an `<Error />` component for invalid routes
+- **`<Route exact path="/" />`** - The `exact` prop specifies the default route
+
+### Router Hooks
+
+**`useRouter()`** - A Next.js hook that allows accessing the router object inside any function component in your app.
+
+**`useParams()`** - Returns an object of key/value pairs of dynamic params from the current URL matched by the `<Route path>`. Child routes inherit all params from parent routes.
+
+---
+
+## 📚 State Management & HTTP
+
+### Redux
+
+State management library for web applications.
+
+**Documentation:** https://redux.js.org/
+
+### Axios
+
+A promise-based HTTP Client for Node.js and the browser. It is isomorphic (can run in both browser and Node.js with the same codebase). On the server-side it uses the native `node.js` http module, while on the client (browser) it uses XMLHttpRequests.
+
+---
+
+## 🎨 Styling
+
+### Styled Components
+
 ```bash
-  $ npx prettier . --check
-  $ npx prettier . --write
+  npm install styled-components
 ```
 
-# Keyboard Shortcuts in WebStorm on MacBook
-=> Shift + Option + Command + P
+### Emotion
 
-# Library of Forms
-https://react-hook-form.com/
-
-# PropTypes
-Bibliothèque qui permet de déclarer le type des props qui est attendu lorsque vous les récupérez dans vos composants, et de déclencher un warning, si ça ne correspond pas
 ```bash
-$ npm install prop-types
+  npm install --save @emotion/react
 ```
 
-# Styled Components
+---
+
+## 🛠️ Development Tools
+
+### ESLint
+
+Tool for identifying code errors.
+
+**Configuration file:** `eslint.config.js` or `eslint.config.mjs`
+
+**Install ESLint:**
+
 ```bash
-$ npm install styled-components
+  npm install --save-dev eslint
 ```
 
-# Emotion
+**Fix errors automatically:**
+
 ```bash
-$ npm install --save @emotion/react
+  npx eslint --fix .
 ```
 
-# Simple Import Sort
+### Prettier
+
+The reference code formatting tool.
+
+**Configuration file:** `.prettierrc.json` or other formats
+
+**Install Prettier:**
+
 ```bash
-  $ npm install --save-dev eslint-plugin-simple-import-sort
+  npm install --save-dev --save-exact prettier
 ```
 
-⚠️ Need to change the **eslint.config.js** OR **eslint.config.mjs** file
+**Format all files:**
+
+```bash
+  # Check formatting
+  npx prettier . --check
+
+  # Write formatting changes
+  npx prettier . --write
+```
+
+### PropTypes
+
+A library that declares the expected type of props when receiving them in components, triggering a warning if types don't match.
+
+```bash
+  npm install prop-types
+```
+
+### Simple Import Sort
+
+```bash
+  npm install --save-dev eslint-plugin-simple-import-sort
+```
+
+⚠️ **Note:** Requires changes to the `eslint.config.js` or `eslint.config.mjs` file.
+
+---
+
+## 📝 Forms
+
+**React Hook Form** - A library for managing forms in React.
+
+**Documentation:** https://react-hook-form.com/
+
+---
+
+## ⌨️ Keyboard Shortcuts
+
+### WebStorm on MacBook
+
+**Format with Prettier:** `Shift + Option + Command + P`
+
+---
