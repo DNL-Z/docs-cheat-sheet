@@ -1,209 +1,382 @@
-# RUBY
+# 💎 Ruby
 
-## Install
+Dynamic, object-oriented programming language focused on simplicity and productivity, with an elegant syntax that is natural to read and easy to write.
+
+## 📑 Table of Contents
+
+- [⚙️ Installation](#-installation)
+- [🔤 Operators and Syntax](#-operators-and-syntax)
+  - [Basic Operators](#basic-operators)
+  - [Variable Interpolation](#variable-interpolation)
+- [📦 Data Structures](#-data-structures)
+  - [Symbols](#symbols)
+  - [Hashes](#hashes)
+- [🔧 Variables](#-variables)
+  - [Variable Types](#variable-types)
+- [🎯 Control Flow](#-control-flow)
+  - [Unless Statement](#unless-statement)
+- [🏗️ Classes and Objects](#-classes-and-objects)
+  - [Defining Classes](#defining-classes)
+  - [Inheritance](#inheritance)
+  - [Overwriting Classes](#overwriting-classes)
+- [📚 Modules](#-modules)
+  - [Include (Instance Methods)](#include-instance-methods)
+  - [Extend (Class Methods)](#extend-class-methods)
+- [🔁 Iterators](#-iterators)
+- [🛠️ Useful Methods](#-useful-methods)
+- [⚡ Advanced Blocks](#-advanced-blocks)
+- [🚂 Ruby on Rails](#-ruby-on-rails)
+  - [Getting Started](#getting-started)
+  - [Generators](#generators)
+  - [Database Management](#database-management)
+  - [Project Architecture](#project-architecture)
+  - [Testing](#testing)
+
+---
+
+## ⚙️ Installation
+
+Install Ruby using rbenv (Ruby version manager):
 
 ```bash
-brew install rbenv
+  brew install rbenv
 ```
 
-## Operators
+---
 
-nil : rien
-|| : ou
-&& : et
-<=> : différence (puts 1 <=> 2 return -1, puts 1 <=> 1 return 0)
+## 🔤 Operators and Syntax
 
-## Appel a une variable
+### Basic Operators
 
-#\name\ ou "hello %s" % name
+- **nil**: represents nothing/null
+- **||**: logical OR
+- **&&**: logical AND
+- **<=>**: spaceship operator (comparison)
+  - Returns `-1` if left is less than right
+  - Returns `0` if left equals right
+  - Returns `1` if left is greater than right
 
-## Symbols
+```ruby
+puts 1 <=> 2  # returns -1
+puts 1 <=> 1  # returns 0
+puts 2 <=> 1  # returns 1
+```
 
-\:toto => 'coucou'\[:toto]
+### Variable Interpolation
 
-## Hashes
+```ruby
+# Using interpolation
+"Hello #{name}"
 
-hash = \test: 'test'\
-hash = \:test => 'test'\
-hash = \'test' => 'test'\
+# Using string formatting
+"Hello %s" % name
+```
+
+---
+
+## 📦 Data Structures
+
+### Symbols
+
+Symbols are immutable identifiers, prefixed with a colon:
+
+```ruby
+hash = { :toto => 'coucou' }
+hash[:toto]  # returns 'coucou'
+```
+
+### Hashes
+
+Hashes are key-value pairs (similar to dictionaries in other languages):
+
+```ruby
+# Modern syntax (symbol keys)
+hash = { test: 'test' }
+
+# Traditional syntax (symbol keys)
+hash = { :test => 'test' }
+
+# String keys
+hash = { 'test' => 'test' }
+
+# Accessing values
 hash[:test]
+```
 
-## Variables
+---
 
-* Local foo
-* Globale $foo
-* Instance @foo
-* Classe @@foo
-* Constants FOO
+## 🔧 Variables
 
-## Condition
+### Variable Types
 
-unless = condition inverse /!\\ a utiliser pour de condition simple
+- **Local**: `foo` - accessible within current scope
+- **Global**: `$foo` - accessible everywhere
+- **Instance**: `@foo` - accessible within instance of a class
+- **Class**: `@@foo` - shared across all instances of a class
+- **Constants**: `FOO` - should not be changed
 
-## Les Class
+---
 
+## 🎯 Control Flow
+
+### Unless Statement
+
+Inverse condition (use only for simple conditions):
+
+```ruby
+# Executes if condition is false
+unless user.logged_in?
+  redirect_to login_path
+end
+```
+
+---
+
+## 🏗️ Classes and Objects
+
+### Defining Classes
+
+```ruby
 class Car
   def initialize(door)
     @door = door
   end
+
   def door
     @door
   end
 end
-class Bus < Car // Héritage
+
+car = Car.new(3)
+puts car.door
+```
+
+### Inheritance
+
+```ruby
+class Bus < Car
   def driver
     true
   end
 end
-car = Car.new(3)
-puts car.door
-puts car.driver if car.respond_to?(:driver)
 
-## Overwrite a Class
+bus = Bus.new(4)
+puts bus.door  # inherited from Car
+puts bus.driver if bus.respond_to?(:driver)
+```
 
+### Overwriting Classes
+
+You can add methods to existing classes (monkey patching):
+
+```ruby
 class String
   def bye
-    p "good-bye #\self\"
+    p "good-bye #{self}"
   end
 end
-'John'.bye
 
-## Modules
+'John'.bye  # outputs: "good-bye John"
+```
 
-(* includes : ajoute en tant que méthode d'instance)
+---
+
+## 📚 Modules
+
+### Include (Instance Methods)
+
+Adds methods as instance methods:
+
+```ruby
 module Automatic
   def open
     'open'
   end
+
   def close
     'close'
   end
 end
+
 class Door
   include Automatic
 end
+
 door = Door.new
-p door.open
-p door.close
-(* extends : ajoute en tant que méthode de class)
+p door.open   # works
+p door.close  # works
+```
+
+### Extend (Class Methods)
+
+Adds methods as class methods:
+
+```ruby
 module Hello
   def say
     'hello'
   end
 end
+
 class Dog
-  extends Hello
+  extend Hello
 end
-p Dog.say # Marche
-p Dog.new.say # Marche pas  
 
-## Iterators
+p Dog.say       # works
+p Dog.new.say   # doesn't work
+```
 
-10.times \ puts 'Hello' \
-['1','2','3'].each \ |number| p number \
-['1','2','3'].each_with_index \ |number, index| p "#\number\ #\index\" \
+---
 
-## Quelques méthodes utiles
+## 🔁 Iterators
 
-.capitalize
-.nil?
-.empty?
-.include? 'o'
-var.push('toto') == var << ('toto')
+```ruby
+# Repeat action n times
+10.times { puts 'Hello' }
 
-## Tricky block
+# Iterate over array
+['1', '2', '3'].each { |number| p number }
 
+# Iterate with index
+['1', '2', '3'].each_with_index { |number, index| p "#{number} #{index}" }
+```
+
+---
+
+## 🛠️ Useful Methods
+
+```ruby
+.capitalize      # Capitalizes first letter
+.nil?           # Checks if value is nil
+.empty?         # Checks if collection is empty
+.include?('o')  # Checks if element exists
+
+# Array operations
+var.push('toto')  # equivalent to var << 'toto'
+```
+
+---
+
+## ⚡ Advanced Blocks
+
+Using `yield` to create custom block methods:
+
+```ruby
 class String
   def do_some
     yield(self)
   end
 end
-"rober".do_some \ |ma_string| puts "coucou #\ma_string\"\
 
-## **Ruby** on Rails
-
-## Créer une nouvelle application
-
-```bash
-rails new « application_name »
+"robert".do_some { |my_string| puts "hello #{my_string}" }
+# outputs: "hello robert"
 ```
 
-## Lancer le serveur de l’application
+---
+
+## 🚂 Ruby on Rails
+
+### Getting Started
+
+Create a new Rails application:
 
 ```bash
-rails server
+  rails new application_name
 ```
 
-Architecture d’un projet :
-* app
-* bin
-* config
-* db
-* lib
-* log
-* public
-* storage
-* test
-* vendor
-
-## Pour créer un Controller avec l’action « index »
-
-$
-rails generate controller Welcome index
-
-## (5 - rails.doc)
-
-## Pour installer le Gemfile
+Start the development server:
 
 ```bash
-bundle install
+  rails server
 ```
 
-## Config de la db
+### Project Architecture
 
-=> config/database.yml
+Standard Rails project structure:
 
-## Pour créer une migration
+- **app**: Application code (models, views, controllers)
+- **bin**: Binary executables
+- **config**: Configuration files
+- **db**: Database files
+- **lib**: Library modules
+- **log**: Log files
+- **public**: Static files
+- **storage**: Active Storage files
+- **test**: Test files
+- **vendor**: Third-party code
+
+### Generators
+
+Create a controller with an action:
 
 ```bash
-rails generate migration AddWebsiteModel
+  rails generate controller Welcome index
 ```
 
-## Connaitre les routes dispo
+Create a migration:
 
 ```bash
-rake routes
+  rails generate migration AddWebsiteModel
 ```
 
-Exemple de Partial :
-=> _field.html.erb
-
-## Pour créer les db
+Shorter syntax:
 
 ```bash
-rake db:create
+  rails g migration migration_name
 ```
 
-## Créer un fichier de bdd
+### Database Management
+
+Install dependencies from Gemfile:
 
 ```bash
-rails g migration « name »
+  bundle install
 ```
 
-## Faire la migration du fichier de bdd crée
+Database configuration:
 
-```bash
-rake db:migrate
+```
+config/database.yml
 ```
 
-## Pour revenir a la migration précédente
+Create databases:
 
 ```bash
-rake db:rollback
+  rake db:create
 ```
 
-## Pour installer rspec
+Run migrations:
 
 ```bash
-rails generate rspec:install
+  rake db:migrate
+```
+
+Rollback last migration:
+
+```bash
+  rake db:rollback
+```
+
+### Routes
+
+View available routes:
+
+```bash
+  rake routes
+```
+
+### Partials
+
+Partial files start with an underscore:
+
+```
+_field.html.erb
+```
+
+### Testing
+
+Install RSpec for testing:
+
+```bash
+  rails generate rspec:install
 ```
