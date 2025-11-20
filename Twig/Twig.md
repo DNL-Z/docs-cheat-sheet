@@ -1,16 +1,67 @@
-# TWIG
+# 🌿 Twig
 
-Expressions can be used in \% blocks %\ and $\ expressions \.
+Flexible, fast, and secure template engine for PHP applications.
 
-## Descriptions des opérateurs
+## 📑 Table of Contents
 
-==	L’expression de gauche est-elle égale à l’expression de droite?
-+	Convertit les deux arguments en un nombre et les ajoute.
--	Convertissez les deux arguments en un nombre et soustrayez-les.
-*	Convertissez les deux arguments en un nombre et multipliez-les.
-/	Convertissez les deux arguments en un nombre et divisez-les.
-%	Convertit les deux arguments en un nombre et calcule le reste de la division entière.
-~        Convertit les deux arguments en une chaîne et les concaténe.
-or	 True si l’expression gauche ou droite est vraie.
-and	 Vrai si l’expression gauche et droite est vraie.
-not	 Ignorer/Nier l’expression.
+- [🔤 Expression Syntax](#-expression-syntax)
+- [🔧 Operators](#-operators)
+  - [Arithmetic Operators](#arithmetic-operators)
+  - [Comparison Operators](#comparison-operators)
+  - [Logical Operators](#logical-operators)
+  - [String Operators](#string-operators)
+
+---
+
+## 🔤 Expression Syntax
+
+Expressions can be used in `{% blocks %}` and `{{ expressions }}`.
+
+```twig
+{# Variable output #}
+{{ variable }}
+
+{# Control structure #}
+{% if condition %}
+    Content
+{% endif %}
+```
+
+---
+
+## 🔧 Operators
+
+### Arithmetic Operators
+
+| Operator | Description | Example |
+|----------|-------------|---------|
+| `+` | Converts both arguments to a number and adds them | `{{ 5 + 3 }}` → `8` |
+| `-` | Converts both arguments to a number and subtracts them | `{{ 10 - 4 }}` → `6` |
+| `*` | Converts both arguments to a number and multiplies them | `{{ 3 * 7 }}` → `21` |
+| `/` | Converts both arguments to a number and divides them | `{{ 20 / 4 }}` → `5` |
+| `%` | Converts both arguments to a number and returns the remainder | `{{ 10 % 3 }}` → `1` |
+
+### Comparison Operators
+
+| Operator | Description | Example |
+|----------|-------------|---------|
+| `==` | Is the left expression equal to the right expression? | `{{ 5 == 5 }}` → `true` |
+| `!=` | Is the left expression not equal to the right expression? | `{{ 5 != 3 }}` → `true` |
+| `<` | Is the left expression less than the right expression? | `{{ 3 < 5 }}` → `true` |
+| `>` | Is the left expression greater than the right expression? | `{{ 7 > 5 }}` → `true` |
+| `<=` | Is the left expression less than or equal to the right? | `{{ 5 <= 5 }}` → `true` |
+| `>=` | Is the left expression greater than or equal to the right? | `{{ 5 >= 3 }}` → `true` |
+
+### Logical Operators
+
+| Operator | Description | Example |
+|----------|-------------|---------|
+| `or` | True if the left or right expression is true | `{{ true or false }}` → `true` |
+| `and` | True if both left and right expressions are true | `{{ true and false }}` → `false` |
+| `not` | Negates the expression | `{{ not false }}` → `true` |
+
+### String Operators
+
+| Operator | Description | Example |
+|----------|-------------|---------|
+| `~` | Converts both arguments to a string and concatenates them | `{{ "Hello" ~ " World" }}` → `"Hello World"` |
