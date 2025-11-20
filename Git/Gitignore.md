@@ -1,4 +1,4 @@
-# 🚫 GITIGNORE
+# 🚫 Gitignore
 
 **.gitignore** is a text file that tells Git which files or folders to ignore in a project. It helps keep your repository clean by excluding files that shouldn't be version controlled, such as dependencies, build outputs, environment files, and system-specific files.
 
