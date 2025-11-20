@@ -1,4 +1,4 @@
-# 🔐 CYBERSECURITY
+# 🔐 Cybersecurity
 
 ## 💥 Brute Force
 
