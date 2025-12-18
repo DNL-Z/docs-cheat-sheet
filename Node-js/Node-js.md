@@ -292,38 +292,38 @@ Has body: ❌ No
 
 ### 2xx - Success
 
-| Code | Meaning | Usage |
-|------|---------|-------|
-| 200 | OK | Successful GET, PUT, PATCH |
-| 201 | Created | Successful POST |
-| 204 | No Content | Successful DELETE |
+| Code | Meaning    | Usage                      |
+|------|------------|----------------------------|
+| 200  | OK         | Successful GET, PUT, PATCH |
+| 201  | Created    | Successful POST            |
+| 204  | No Content | Successful DELETE          |
 
 ### 3xx - Redirection
 
-| Code | Meaning | Usage |
-|------|---------|-------|
-| 301 | Moved Permanently | Resource relocated |
-| 302 | Found | Temporary redirect |
-| 304 | Not Modified | Cached response valid |
+| Code | Meaning           | Usage                 |
+|------|-------------------|-----------------------|
+| 301  | Moved Permanently | Resource relocated    |
+| 302  | Found             | Temporary redirect    |
+| 304  | Not Modified      | Cached response valid |
 
 ### 4xx - Client Errors
 
-| Code | Meaning | Usage |
-|------|---------|-------|
-| 400 | Bad Request | Invalid syntax/data |
-| 401 | Unauthorized | Missing/invalid authentication |
-| 403 | Forbidden | Authenticated but no permission |
-| 404 | Not Found | Resource doesn't exist |
-| 422 | Unprocessable Entity | Validation errors |
-| 429 | Too Many Requests | Rate limit exceeded |
+| Code | Meaning              | Usage                           |
+|------|----------------------|---------------------------------|
+| 400  | Bad Request          | Invalid syntax/data             |
+| 401  | Unauthorized         | Missing/invalid authentication  |
+| 403  | Forbidden            | Authenticated but no permission |
+| 404  | Not Found            | Resource doesn't exist          |
+| 422  | Unprocessable Entity | Validation errors               |
+| 429  | Too Many Requests    | Rate limit exceeded             |
 
 ### 5xx - Server Errors
 
-| Code | Meaning | Usage |
-|------|---------|-------|
-| 500 | Internal Server Error | Generic server error |
-| 502 | Bad Gateway | Invalid response from upstream |
-| 503 | Service Unavailable | Server temporarily down |
+| Code | Meaning               | Usage                          |
+|------|-----------------------|--------------------------------|
+| 500  | Internal Server Error | Generic server error           |
+| 502  | Bad Gateway           | Invalid response from upstream |
+| 503  | Service Unavailable   | Server temporarily down        |
 
 ---
 
@@ -675,5 +675,22 @@ app.get('/api/users', (req, res) => {
   });
 });
 ```
+
+---
+
+## 🧱 SOLID Principles
+
+[SOLID](https://medium.com/@abderrahmane.roumane.ext/tout-comprendre-des-principes-solid-en-10-minutes-votre-guide-rapide-pour-un-code-plus-efficace-bc625c3634f5)
+
+- Single Responsibility Principle (SRP)
+  - [SRP](https://medium.com/@goubardleo/les-principes-solid-7111d2131b1c)
+- Open/Closed Principle (OCP)
+  - [OCP](https://medium.com/@heinrickratajczakpro/07-52-comprendre-le-principe-ouvert-ferm%C3%A9-open-closed-principle-de-solid-guide-pratique-pour-8325f3bac58c)
+- Liskov Substitution Principle (LSP)
+  - [LSP](https://devcookies.medium.com/day-three-understanding-solid-principles-liskov-substitution-principle-lsp-5587d7bc7cf1)
+- Interface Segregation Principle (ISP)
+  - [ISP](https://medium.com/@ramdhas/4-interface-segregation-principle-isp-solid-principle-39e477bae2e3)
+- Dependency Inversion Principle (DIP)
+  - [DIP](https://dev.to/paulocappa/solid-d-dependency-inversion-principle-dip-34hd)
 
 ---
