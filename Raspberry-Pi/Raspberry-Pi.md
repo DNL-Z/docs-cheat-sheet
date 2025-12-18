@@ -411,6 +411,14 @@ View private key:
   sudo certbot certificates
 ```
 
+**Check certificate configuration with Nginx:**
+
+```bash
+  sudo nginx -T | grep ssl_certificate
+  sudo nginx -t
+  curl -vk <web_site>
+```
+
 ### Firewall Configuration
 
 **Manage UFW (Uncomplicated Firewall):**
