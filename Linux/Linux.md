@@ -21,6 +21,7 @@ Command-line interface and shell utilities for Linux operating systems, includin
   - [Changing Permissions](#changing-permissions)
   - [Changing Ownership](#changing-ownership)
 - [📜 Scripts](#-scripts)
+  - [Script Structure](#script-structure)
   - [Script Execution](#script-execution)
   - [Script Permissions](#script-permissions)
   - [Comparison Operators](#comparison-operators)
@@ -198,6 +199,18 @@ Command-line interface and shell utilities for Linux operating systems, includin
   ssh-keygen -t rsa -b 1024 -f ~/.ssh/id_rsa_eval -N protected
 ```
 
+**Heredoc (Here Document)**
+
+**EOF** means "End Of File". It's a heredoc (here document) in bash that allows executing multiple commands via SSH.
+
+```bash
+  ssh user@server << EOF
+    command1
+    command2
+    command3
+  EOF
+```
+
 ---
 
 ## 📦 SCP (Secure Copy Protocol)
@@ -309,6 +322,25 @@ x: execute permission = 1
 ---
 
 ## 📜 Scripts
+
+### Script Structure
+
+**Every script must start with a shebang**
+
+```bash
+  #!/bin/bash
+```
+
+**Enable "exit on error" mode**
+
+The `set -e` option stops the script execution if any command returns a non-zero exit status (error).
+
+```bash
+  #!/bin/bash
+  set -e
+
+# Your script commands here
+```
 
 ### Script Execution
 
