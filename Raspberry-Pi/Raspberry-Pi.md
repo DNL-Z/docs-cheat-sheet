@@ -61,6 +61,23 @@ A comprehensive reference guide for Raspberry Pi administration, covering system
 
 ## 🔄 System Management
 
+### Internet Box Management
+
+You need to possess a **Full-Stack IP address**.
+
+| Protocol | External port (WAN) | Internal port (LAN) | IP locale       |
+|----------|---------------------|---------------------|-----------------|
+| TCP      | **16422**           | 22                  | IP_Raspberry_Pi |
+| TCP      | 80                  | 80                  | IP_Raspberry_Pi |
+| TCP      | 443                 | 443                 | IP_Raspberry_Pi |
+
+⚠️ Do not expose Port 22 to the Internet for security reasons.
+
+And you need to configure the DNS server to point to the IP address of the router.
+
+> A @ 0 <public_IP> 14400 <br>
+> CNAME www 0 <dns_name> 300
+
 ### Check OS Version
 
 ```bash
@@ -188,7 +205,7 @@ Transfer home directory files to a new user:
 Update the configuration:
 
 ```
-autologin-user=new_username
+  autologin-user=new_username
 ```
 
 ### Delete User
@@ -236,6 +253,27 @@ Edit SSH configuration:
 ```bash
   sudo nano /etc/ssh/sshd_config
 ```
+
+Add or modify the following lines, depending on your needs:
+
+>
+> Port 22
+>
+> 
+> **PubkeyAuthentication** yes
+> 
+> **PasswordAuthentication** no <br>
+> ⚠️ (but you need to save an ssh pub key to authorized_keys **before**)
+> 
+> ChallengeResponseAuthentication no
+> 
+> UsePAM yes
+> 
+> **MaxAuthTries** 3
+> X11Forwarding no
+> 
+> Subsystem sftp /usr/lib/openssh/sftp-server
+> 
 
 Edit site configuration:
 
@@ -359,6 +397,18 @@ View private key:
 ```bash
   cat Server-CSR-SSL/myserver.key
   cat /etc/ssl/private/ssl-cert-snakeoil.key
+```
+
+**Check certificate validity:**
+
+```bash
+  sudo certbot renew --dry-run
+```
+
+**List certificates:**
+
+```bash
+  sudo certbot certificates
 ```
 
 ### Firewall Configuration
